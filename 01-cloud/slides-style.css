@@ -1,0 +1,267 @@
+/* Custom fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Handlee&display=swap');
+
+/* colors */
+/* From: https://www.pantone.com/color-intelligence/color-of-the-year/color-of-the-year-2020-palette-exploration */
+
+:root {
+  --classic-blue: #0F4C81;
+  --provence: #638CC7;
+  --baby-blue: #B6CADA;
+  --baby-blue-30: #B6CADA30;
+  --monument: #7A8387;
+  --stucco: #A58D7F;
+  --peach-quartz: #F5B895;
+  --peach-quartz-30: #F5B89530;
+  --cornhusk: #F4DBB3;
+  --cornhusk-30: #F4DBB330;
+  --opal-gray: #A49E9D;
+  --opal-gray-30: #A49E9D30;
+}
+
+
+/* Title slide customization */
+.title-slide h1, h2 {
+  text-align: left;
+  font-weight: bold;
+}
+
+.title-slide h1 {
+  font-weight: bold;
+  font-family: Raleway;
+}
+
+.inverse h2 {
+  font-weight: normal;
+}
+
+.title-slide h2 {
+  font-weight: normal;
+}
+
+.title-slide a {
+  color: var(--baby-blue);
+}
+
+.title-slide h3 {
+  text-align: right;
+}
+
+/* Alignment */
+.right{
+  text-align: right;
+}
+
+/* Margins around headers */
+
+h1, h2, h3 {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+/* Font colors */
+.pink {
+  color: var(--peach-quartz);
+}
+
+/* Font sizes */
+.larger { font-size: 400% }
+.bitlarger { font-size: 200% }
+.large { font-size: 130% }
+.midi { font-size: 85% }
+.small { font-size: 70% }
+.xsmall { font-size: 60% }
+.tiny { font-size: 50% }
+
+/* Custom fonts */
+
+.huge-text {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 600%;
+ font-weight: bold;
+ color: var(--classic-blue);
+}
+.huge-number {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1700%;
+ font-weight: bold;
+ color: var(--baby-blue);
+}
+
+/* Handwriting */
+.hand{
+  font-family: 'Gochi Hand', cursive;
+  color: var(--classic-blue);
+  font-size: 125%;
+}
+.hand-large{
+  font-family: 'Gochi Hand', cursive;
+  color: var(--classic-blue);
+  font-size: 500%;
+}
+
+/*Alternative two-column layouts*/
+
+/*Left 70% - Right 30% */
+.pull-left-wide {
+  width: 70%;
+  float: left;
+}
+.pull-right-narrow {
+  width: 27%;
+  float: right;
+}
+.pull-right-narrow ~ * {
+  clear: both;
+}
+
+  /*Left 30% - Right 70% */
+.pull-left-narrow {
+  width: 30%;
+  float: left;
+}
+.pull-right-wide {
+  width: 67%;
+  float: right;
+}
+.pull-right-wide ~ * {
+  clear: both;
+}
+
+
+/* Four column layout */
+.four-column {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+
+/* Three column layout */
+.three-column {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/* Progress bar */
+/* https://github.com/yihui/xaringan/wiki/Progressbar */
+.remark-slide-number {
+  position: inherit;
+}
+
+.remark-slide-number .progress-bar-container {
+  position: absolute;
+  top: 0;
+  height: 4px;
+  display: block;
+  left: 0;
+  right: 0;
+}
+
+.remark-slide-number .progress-bar {
+  height: 100%;
+  background-color: var(--classic-blue);
+}
+
+/* Square bullets for lists */
+
+ul{
+  list-style-type: square;
+}
+
+
+/* Custom boxes */
+.discussion, .your-turn, .take-home {
+  padding: 5px 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.discussion{
+  border-left: solid 5px var(--opal-gray);
+  background-color: var(--opal-gray-30);
+}
+.discussion:before{
+  content: "Discussion";
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--monument);
+  margin-bottom: 10px;
+}
+.your-turn {
+  border-left: solid 5px var(--cornhusk);
+  background-color: var(--cornhusk-30);
+  font-size: 25px;
+}
+.your-turn:before{
+  content: "Your turn!";
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--stucco);
+  margin-bottom: 10px;
+}
+.take-home {
+  border-left: solid 5px var(--opal-gray);
+  background-color: var(--opal-gray-30);
+}
+.take-home:before{
+  content: "Take home";
+  font-size: 150%;
+  font-weight: bold;
+  color: var(--monument);
+  margin-bottom: 10px;
+}
+.alert {
+  border-right: solid 5px var(--peach-quartz);
+  background-color: var(--peach-quartz-30);
+}
+
+/* Code highlighting */
+.remark-code-line-highlighted {
+  background-color: var(--peach-quartz)
+}
+
+/* Footer */
+div.my-footer {
+    border-top: 1px solid var(--opal-gray);
+    position: absolute;
+    bottom: 0px;
+    height: 35px;
+    width: 90%;
+}
+div.my-footer span {
+    font-size: 12pt;
+    position: absolute;
+    color: #333333;
+    bottom: 10px;
+}
+div.my-footer a {
+    font-size: 12pt;
+    color: #333333;
+}
+
+
+/* Footnote */
+.footnote {
+  position: absolute;
+  bottom: 1em;
+  padding-right: 4em;
+  font-size: 70%;
+}
