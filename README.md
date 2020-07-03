@@ -35,3 +35,7 @@ The learnr R package provides a new multimedia approach for teaching statistics 
 
 A version control system is an essential element of a reproducible workflow that deserves due consideration among the learning objectives of statistics courses. In this workshop we demonstrate how to teach data science and statistical computing with using Git (a version control system) and GitHub (a remote hosting service for Git repositories) as concrete learning objectives for the course. The goal of this workshop is to equip educators with concrete information on how to get started with teaching with Git as well as give them hands-on experience from the student and the instructor perspective.  
 **Registration:** [smartsurvey.co.uk/s/G2KXHP](https://www.smartsurvey.co.uk/s/G2KXHP/)
+
+---
+
+Illustrations by Desirée De Leon.
