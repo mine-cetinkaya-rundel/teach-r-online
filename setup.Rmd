@@ -1,0 +1,29 @@
+```{r setup, include=FALSE}
+# R options
+options(htmltools.dir.version = FALSE)
+# figure height, width, dpi
+knitr::opts_chunk$set(echo = TRUE, 
+                      fig.width = 5, 
+                      fig.height = 3,
+                      dpi = 300)
+# fontawesome
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+# magick
+dev.off <- function(){
+  invisible(grDevices::dev.off())
+}
+# countdown pkg for all slide decks
+library(countdown)
+# set seed
+set.seed(1234)
+```
+
+layout: true
+  
+<div class="my-footer">
+<span>
+<a href="https://bit.ly/teach-r-online-mats" target="_blank"><b>bit.ly/teach-r-online-mats</b></a> - Dr. Mine Çetinkaya-Rundel & Dr. Colin Rundel
+</span>
+</div> 
+
+---
