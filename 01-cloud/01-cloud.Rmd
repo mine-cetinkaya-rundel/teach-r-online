@@ -42,6 +42,19 @@ library(openintro)
 library(jsonlite)
 ```
 
+## Activity 
+
+.hand[while we wait to get started...]
+
+- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
+- Log in with Google or GitHub, or create a new account
+- Once you join our workspace, start the assignment titled `COVID-19`
+- Knit the document titled `covid-19.Rmd` and inspect the visualisation
+- Then, in the R Markdown document, change one of the countries plotted to a country of your own choice
+- Knit again, and inspect
+
+---
+
 class: middle
 
 .pull-left[
@@ -377,14 +390,6 @@ countdown(minutes = 10, warn_when = 1)
 - You can't keep track which students started their assignment
 - Students control permissions
 - You can't easily peek into student projects -- they would need to explicitly share the project with you
-]
-
----
-
-class:middle
-
-.discussion[
-Any questions so far?
 ]
 
 ---
