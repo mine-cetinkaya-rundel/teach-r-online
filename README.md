@@ -23,6 +23,8 @@ RStudio Cloud is a lightweight and easy to set up / use solution to teaching R o
 ### Workshop 2: Building interactive tutorials in R
 #### Friday July 10th, 2 - 3:30pm BST
 
+### Slides [To be posted]
+
 The learnr R package provides a new multimedia approach for teaching statistics and programming with R. Building on R Markdown, this package allows teachers to create interactive tutorials containing narrative, figures, illustrations, and equations, code exercises (R code chunks that users can edit and execute directly), multiple choice quiz questions, videos, and interactive Shiny components. Tutorials built with this tool can be used for checking and reinforcing students' understanding and have the benefit of being self-paced and provide instant feedback. We will demonstrate how to use the learnr package to build interactive R tutorials and discuss best practices for using them.  
 **Registration:** [smartsurvey.co.uk/s/10FXRD](https://www.smartsurvey.co.uk/s/10FXRD/)
 
@@ -32,6 +34,8 @@ The learnr R package provides a new multimedia approach for teaching statistics 
 
 ### Workshop 3: Teaching computing with Git and GitHub 
 #### Friday July 17th, 2 - 3:30pm
+
+### Slides [To be posted]
 
 A version control system is an essential element of a reproducible workflow that deserves due consideration among the learning objectives of statistics courses. In this workshop we demonstrate how to teach data science and statistical computing with using Git (a version control system) and GitHub (a remote hosting service for Git repositories) as concrete learning objectives for the course. The goal of this workshop is to equip educators with concrete information on how to get started with teaching with Git as well as give them hands-on experience from the student and the instructor perspective.  
 **Registration:** [smartsurvey.co.uk/s/G2KXHP](https://www.smartsurvey.co.uk/s/G2KXHP/)
