@@ -6,6 +6,8 @@ The workshops are hosted by the Centre for Statistics at the University of Edinb
 
 ---
 
+<img src="illustrations/cloud.jpeg" align="right" height="150">
+
 ### Workshop 1: Teaching R online with RStudio Cloud
 #### Friday July 3rd, 2 - 3:30pm BST
 
@@ -16,6 +18,8 @@ RStudio Cloud is a lightweight and easy to set up / use solution to teaching R o
 
 ---
 
+<img src="illustrations/learnr.jpeg" align="right" height="150">
+
 ### Workshop 2: Building interactive tutorials in R
 #### Friday July 10th, 2 - 3:30pm BST
 
@@ -23,6 +27,8 @@ The learnr R package provides a new multimedia approach for teaching statistics 
 **Registration:** [smartsurvey.co.uk/s/10FXRD](https://www.smartsurvey.co.uk/s/10FXRD/)
 
 ---
+
+<img src="illustrations/git.jpeg" align="right" height="150">
 
 ### Workshop 3: Teaching computing with Git and GitHub 
 #### Friday July 17th, 2 - 3:30pm
