@@ -1,0 +1,4 @@
+## Workshop 2: Building interactive tutorials in R
+### Friday July 10th, 2 - 3:30pm BST
+
+The learnr R package provides a new multimedia approach for teaching statistics and programming with R. Building on R Markdown, this package allows teachers to create interactive tutorials containing narrative, figures, illustrations, and equations, code exercises (R code chunks that users can edit and execute directly), multiple choice quiz questions, videos, and interactive Shiny components. Tutorials built with this tool can be used for checking and reinforcing students' understanding and have the benefit of being self-paced and provide instant feedback. We will demonstrate how to use the learnr package to build interactive R tutorials and discuss best practices for using them.  

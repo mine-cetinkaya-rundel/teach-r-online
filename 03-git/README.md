@@ -1,0 +1,4 @@
+## Workshop 3: Teaching computing with Git and GitHub 
+### Friday July 17th, 2 - 3:30pm
+
+A version control system is an essential element of a reproducible workflow that deserves due consideration among the learning objectives of statistics courses. In this workshop we demonstrate how to teach data science and statistical computing with using Git (a version control system) and GitHub (a remote hosting service for Git repositories) as concrete learning objectives for the course. The goal of this workshop is to equip educators with concrete information on how to get started with teaching with Git as well as give them hands-on experience from the student and the instructor perspective.
