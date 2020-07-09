@@ -14,8 +14,11 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 # packages
 library(learnr)
-library(gradethis)
 library(tidyverse)
+#devtools::install_github("rstudio-education/gradethis")
+library(gradethis)
+#devtools::install_github("rundel/learnhash")
+library(learnrhash)
 
 # use gradethis for checking. No timelimit
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
@@ -491,6 +494,16 @@ question("Which age group has spent the most money on Lego sets?",
   )
 ```
 
-## Wrap Up
+## Wrap Up & Submit
 
 Congratulations, we hope you enjoyed reviewing what we've learned so far!
+
+---
+
+```{r context="server"}
+learnrhash::encoder_logic()
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(url = "https://forms.gle/axes15uGwAhiPcbs5")
+```
