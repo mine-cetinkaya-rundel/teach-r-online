@@ -494,6 +494,7 @@ question("Which age group has spent the most money on Lego sets?",
   )
 ```
 
+
 ## Wrap Up & Submit
 
 Congratulations, we hope you enjoyed reviewing what we've learned so far!
@@ -506,4 +507,20 @@ learnrhash::encoder_logic()
 
 ```{r encode, echo=FALSE}
 learnrhash::encoder_ui(url = "https://forms.gle/axes15uGwAhiPcbs5")
+```
+
+## Decode demo
+
+The following would not be included in a student facing tutorial, but has been included 
+here to demonstrate the decoding functionality of the [`learnrhash`](https://github.com/rundel/learnrhash) package. 
+
+Paste your hash from the preceding step into the text box below and push the Decode button.
+You should then see printed tibbles containing the question and exercise results you have entered into the tutorial so far. See the package README for details on how these data would be extracted in practice for a real assignment.
+
+```{r context="server"}
+learnrhash::decoder_logic()
+```
+
+```{r decode, echo=FALSE}
+learnrhash::decoder_ui()
 ```
