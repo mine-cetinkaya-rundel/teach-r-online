@@ -99,8 +99,7 @@ means
 ```
 
 ```
-##  [1] -1.21  0.28  1.08 -2.35  0.43  0.51 -0.57 -0.55
-##  [9] -0.56 -0.89
+##  [1] -1.21  0.28  1.08 -2.35  0.43  0.51 -0.57 -0.55 -0.56 -0.89
 ```
 What is the value of the first mean?
 ]
@@ -274,16 +273,31 @@ devtools::install_github("rstudio/gradethis")
 
 ---
 
-background-position: center
-background-repeat: no-repeat
-background-size: contain
 class: middle
 
-### Demo: learnr / gradethis
+.huge[demo]
 
 [**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
 
 [**`[code]`**](https://github.com/mine-cetinkaya-rundel/feed-me-back/blob/master/examples/01-learnr-gradethis/nobel-laureates-learnr.Rmd)
+
+---
+
+class: middle, inverse
+
+.huge-text[sharing]
+
+---
+
+## Sharing with students
+
+- You could share the R Markdown document (and all accompanying files) but that’s probably not what you want to do...
+
+- Deploy on
+  - shinyapps.io
+  - RStudio Connect (free for academic use, requires setup)
+
+- Road less travelled: distribute as a package
 
 ---
 
@@ -357,6 +371,19 @@ assessment. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz)
 - Also read the [Metaprogramming](https://adv-r.hadley.nz/metaprogramming.html) section in Advanced R (Wickham)
 
 &lt;img src="images/learnr-learn-more.jpeg" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.large[
+.hand[Q: Sounds great, but can it handle my class size and usage?]
+]
+
+- First, chances are you're not using these live, but you might be...
+- If so, make sure to max out your instances and instance size on shinyapps.io.
+- Essential reading:
+  - [Publishing learnr Tutorials on shinyapps.io](https://cran.r-project.org/web/packages/learnr/vignettes/shinyapps-publishing.html) by Angela Li
+  - [Teach R with learnr: a powerful tool for remote teaching](https://education.rstudio.com/blog/2020/05/learnr-for-remote/) by Allison Horst
+
 
 ---
 
