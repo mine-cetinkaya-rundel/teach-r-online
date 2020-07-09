@@ -278,6 +278,30 @@ class: middle
 
 class: middle, inverse
 
+.huge-text[recording]
+.huge-text[data]
+
+---
+
+.large[
+.hand-blue[Q: Is it possible to record student data?]
+]
+
+Yes, though not trivial, at this point. See [recording events](https://rstudio.github.io/learnr/publishing.html#Recording_Events) section on the learnr documentation and the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+
+A solution that may be "good enough" for formative exercises: embed a 
+Google/Microsoft/etc. Form at the end and ask students to "sign in" their work.
+**Tip:** Add a free-text question to this form where students reflect on the 
+exercises they just completed, and you can easily capture and analyze. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+
+```{r echo=FALSE, out.width="60%", fig.align="center"}
+knitr::include_graphics("images/learnr-logging.png")
+```
+
+---
+
+class: middle, inverse
+
 .huge-text[closing]
 .huge-text[thoughts]
 
@@ -295,29 +319,11 @@ class: middle, inverse
 
 --
 
-- Use hashing to hide solutions for visible tests 🕵️
-
---
-
-- Test your tests on the students compute environment 💻
-
---
-
-- Abstract your tests to a script that is sourced/imported into the students literate code document 📁
-
---
-
-- Don't give automated feedback on everything 🙈
+- Don't give automated feedback on everything, asking narrative questions that can't be auto checked but gets the student thinking and writing has pedagogical benefits 🙈
 
 --
 
 - Consider peer feedback where automated feedback is not feasible (e.g. interpretation, narrative) but scalability is an issue 👯
-
----
-
-class: middle, inverse
-
-.huge-text[faq]
 
 ---
 
@@ -331,23 +337,6 @@ assessment. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz)
 
 ```{r echo=FALSE, out.width="85%", fig.align="center"}
 knitr::include_graphics("images/learnr-simple.png")
-```
-
----
-
-.large[
-.hand-blue[Q: Is it possible to record student data?]
-]
-
-Yes, though not trivial, at this point. See [recording events](https://rstudio.github.io/learnr/publishing.html#Recording_Events) section on the learnr documentation and the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
-
-A solution that may be "good enough" for formative exercises: embed a 
-Google/Microsoft/etc. Form at the end and ask students to "sign in" their work.
-**Tip:** Add a free-text question to this form where students reflect on the 
-exercises they just completed, and you can easily capture and analyze. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
-
-```{r echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("images/learnr-logging.png")
 ```
 
 ---
