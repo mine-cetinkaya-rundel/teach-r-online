@@ -40,6 +40,7 @@ library(broom)
 library(scales)
 library(openintro)
 library(jsonlite)
+library(usethis)
 ```
 
 ## Activity 
@@ -287,16 +288,37 @@ class: middle, inverse
 .hand-blue[Q: Is it possible to record student data?]
 ]
 
-Yes, though not trivial, at this point. See [recording events](https://rstudio.github.io/learnr/publishing.html#Recording_Events) section on the learnr documentation and the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+Yes, though not trivial, at this point. 
 
-A solution that may be "good enough" for formative exercises: embed a 
-Google/Microsoft/etc. Form at the end and ask students to "sign in" their work.
-**Tip:** Add a free-text question to this form where students reflect on the 
-exercises they just completed, and you can easily capture and analyze. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+---
 
-```{r echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("images/learnr-logging.png")
-```
+## Recording Attempts
+
+A "good enough" solution for formative exercises: embed a 
+Google/Microsoft/etc. Form at the end and ask students to "submit" their work.
+
+This only records that the student reached the end of the tutorial and not how (or even if) they answered any of the questions or exercises.
+
+**Tip:** Adding a free-text question to the form asking students to reflect on the 
+exercises they just completed - this is then recorded and can be analyzed. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+
+---
+
+## Recording Solutions
+
+The [`learnrhash`](https://github.com/rundel/learnrhash) package builds on the previous method by providing a way for students to submit their answers by generating a text "hash" which can be copy and pasted into the web form.
+
+This package is being used to create the submission tool at the end of the sample tutorial.
+
+--
+
+.center[ .huge-text[
+Demo
+] ]
+
+.footnote[
+See also the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+]
 
 ---
 
