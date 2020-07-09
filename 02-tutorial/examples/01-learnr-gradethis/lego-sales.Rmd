@@ -1,0 +1,497 @@
+---
+title: "Lego Sales"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    css: "css/font-size.css"
+runtime: shiny_prerendered
+---
+
+<!-- Add JavaScript code for making the exercise code larger -->
+<script language="JavaScript" src="js/exercise-font-size.js"></script>
+
+```{r setup, include=FALSE}
+# packages
+library(learnr)
+library(gradethis)
+library(tidyverse)
+
+# use gradethis for checking. No timelimit
+tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+
+# make lego sales data frame globally available
+lego_sales <- read_csv("https://rb.gy/shkc8g")
+
+# for grouped summary exercises
+lego_sales <- lego_sales %>%
+  mutate(age_group = case_when(
+    age <= 18             ~ "18 and under",
+    age >= 19 & age <= 25 ~ "19 - 25",
+    age >= 26 & age <= 35 ~ "26 - 35",
+    age >= 36 & age <= 50 ~ "36 - 50",
+    age >= 51             ~ "51 and over"
+    ))
+
+# hide non-exercise code chunks
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**This is a demo tutorial created for the "Building interactive tutorials in R" woekshop. See [here](http://bit.ly/teach-r-online-mats) for slides and full set of materials from the breakout session.**
+
+---
+
+## Introduction
+
+```{r stormtrooper, fig.margin = TRUE, echo = FALSE, fig.width=3, out.width = "100%", fig.cap="Photo by James Pond on Unsplash"}
+knitr::include_graphics("images/james-pond-riEYPSKxoTw-unsplash.jpg")
+```
+
+This week we'll do some data gymnastics to refresh and review what we 
+learned over the past few weeks.
+
+### Learning goals
+
+- Practice the analysis skills you have learned during the last weeks
+- Use independent research to answer a question
+- Deepen your understanding of visualisations
+
+### Getting help
+
+If you have any questions about the assignment, please post them on [Piazza](https://piazza.com)!
+
+### Packages
+
+In this assignment we will work with the `tidyverse` package, so let's go ahead and load it!
+
+```{r load-package, exercise = TRUE}
+library(tidyverse)
+```
+
+## Data
+
+### Lego sales
+
+We have data from Lego sales in 2018 for a sample of customers who bought Legos in the United States.
+The dataset is available as a CSV file [here](https://rb.gy/shkc8g).
+Load the data using the following:
+
+```{r data-setup, exercise = TRUE}
+lego_sales <- read_csv("https://rb.gy/shkc8g")
+```
+
+The codebook for the dataset is as follows:
+
+| Name                       |  Description
+|:----------------|:--------------------------------
+| `first_name` | First name of customer
+| `last_name` | Last name of customer
+| `age` | Age of customer
+| `phone_number` | Phone number of customer
+| `set_id` | Set ID of lego set purchased
+| `number` | Item number of lego set purchased
+| `theme` | Theme of lego set purchased
+| `subtheme` | Sub theme of lego set purchased
+| `year` | Year of purchase
+| `name` |  Name of lego set purchased
+| `pieces` | Number of pieces of legos in set purchased
+| `us_price` | Price of set purchase in US Dollars
+| `image_url` | Image URL of lego set purchased
+| `quantity` | Quantity of lego set(s) purchased
+
+## Counting frequencies
+
+### Most common names
+
+What are the three most common first names of purchasers? Use the code chunk below to find out!
+
+```{r common-names, exercise = TRUE}
+lego_sales %>%
+  ___(___)
+```
+
+```{r common-names-hint-1}
+lego_sales %>%
+  count(___, sort = TRUE)
+```
+
+```{r common-names-solution}
+lego_sales %>%
+  count(first_name, sort = TRUE)
+```
+
+```{r common-names-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "Jackson"), "You have successfully counted names and sorted the counts in descending order."),
+  fail_if(~ identical(as.character(.result[1,1]), "Aaron"), "Did you forget to sort the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Adoria"), "Did you accidentally sort the counts in ascending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Ackah Yensu"), "Did you count last names instead of first names?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Brown"), "Did you count last names instead of first names?"),
+  fail_if(~ TRUE, "Not quite. Take a peek at the hint!")
+)
+```
+
+Now, based on your findings, answer the following question.
+
+```{r quiz-names}
+question("What are the three most common names?",
+    answer("Michael, Jackson, Jacob"),
+    answer("Jackson, Jacob, Joseph",
+           correct = TRUE),
+    answer("Audrey, Kaitlyn, Joshua"),
+    answer("Jacob, Jackson, Audrey"),
+    answer("Kaitlyn, Jacob, Lucas"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+```
+
+### Most common themes
+
+What are the four most common themes of lego sets purchased? Use the code chunk below to find out!
+
+```{r common-themes, exercise = TRUE}
+lego_sales %>%
+  ___(___)
+```
+
+```{r common-themes-hint-1}
+Look at the previous question for help!
+```
+
+```{r common-themes-solution}
+lego_sales %>%
+  count(theme, sort = TRUE)
+```
+
+```{r common-themes-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "Star Wars"), "You have counted themes and sorted the counts correctly."),
+  fail_if(~ identical(as.character(.result[1,1]), "Advanced Models "), "Did you forget to sort the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Classic"), "Did you accidentally sort the counts in ascending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Adventure Camp"), "Did you count subthemes instead of themes?"),
+  fail_if(~ identical(as.numeric(.result[1,2]), 172), "Did you count subthemes instead of themes?"),
+  fail_if(~ TRUE, "Not quite. Take a peek at the hint!")
+)
+```
+
+Now, based on your findings, answer the following question.
+
+```{r quiz-themes}
+question("What are the four most commonly purchased themes?",
+    answer("Gear, Duplo, Ninjago, Star Wars"),
+    answer("Star Wars, Nexo Knights, Gear, City"),
+    answer("Star Wars, Gear, Mixels, Bionicle"),
+    answer("Gear, Star Wars, Nexo Knights, Mixels",
+           correct = TRUE),
+    answer("Nexo Knights, Gear, Duplo, Friends"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+```
+
+### Most common subtheme
+
+Among the most common theme of lego sets purchased, what is the most common subtheme?
+
+```{r most-common-subtheme, exercise = TRUE}
+lego_sales %>%
+  ___(___) %>%
+  ___(___)
+```
+
+```{r most-common-subtheme-hint-1}
+lego_sales %>%
+  filter(___ == ___) %>%
+  ___(___)
+```
+
+```{r most-common-subtheme-hint-2}
+lego_sales %>%
+  filter(theme == ___) %>%
+  count(___)
+```
+
+```{r most-common-subtheme-hint-3}
+Look at the previous question to see what the most common theme is!
+```
+
+```{r most-common-subtheme-solution}
+lego_sales %>%
+  filter(theme == "Star Wars") %>%
+  count(subtheme, sort = TRUE)
+```
+
+```{r most-common-subtheme-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "The Force Awakens"), "You have successfully counted subthemes and sorted the counts in descending order."),
+  fail_if(~ identical(as.character(.result[1,1]), "Battlefront"), "Did you forget to sort the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Ultimate Collector Series"), "Did you accidentally sort the counts in ascending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "Star Wars"), "Did you count themes instead of subthemes?"),
+fail_if(~ TRUE, "Not quite. Take a peek at the hint!")
+)
+```
+
+Now, based on your findings, answer the following question.
+
+```{r quiz-subtheme}
+question("What is the most common subtheme among the most common theme?",
+    answer("Buildable Figures"),
+    answer("Episode V"),
+    answer("The Force Awakens",
+           correct = TRUE),
+    answer("MicroFighters"),
+    answer("Battlefront"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+```
+
+## Discretizing variables
+
+### Grouping by age
+
+Create a new variable called `age_group` and group the ages of customers into the following categories: "18 and under", "19 - 25", "26 - 35", "36 - 50", "51 and over".
+
+```{r create-age-group, exercise = TRUE}
+lego_sales <- ___ %>%
+  ___(age_group = ___(
+    ___
+  ))
+```
+
+```{r create-age-group-hint-1}
+Try using mutate() and case_when()!
+```
+
+```{r create-age-group-hint-2}
+Do you need some help with logical operators? Remember
+
+"18 and under" : age <= 18
+     "19 - 25" : age >= 19 & age <= 25
+
+etc.
+```
+
+```{r create-age-group-hint-3}
+lego_sales <- lego_sales %>%
+  mutate(age_group = case_when(
+    age <= 18             ~ "18 and under",
+    ___
+  ))
+```
+
+```{r create-age-group-solution}
+lego_sales <- lego_sales %>%
+  mutate(age_group = case_when(
+    age <= 18 ~ "18 and under",
+    age >= 19 & age <= 25 ~ "19 - 25",
+    age >= 26 & age <= 35 ~ "26 - 35",
+    age >= 36 & age <= 50 ~ "36 - 50",
+    age >= 51 ~ "51 and over"
+  ))
+```
+
+```{r create-age-group-check}
+grade_result(
+  pass_if(~ identical(paste(as.numeric(table(.result[,"age_group"])), collapse = ", "), "30, 129, 183, 216, 62"), "You have grouped the ages according to the instructions!"),
+  fail_if(~ TRUE, "Not quite. Review the hints.")
+)
+```
+
+### Most common age group
+
+Count the number of customers in each age group and display the counts in descending order, from most common to least common age group.
+
+Which age group is the most common? Write code in the chunk below to figure it out!
+
+````{r count-ages, exercise = TRUE}
+lego_sales %>%
+  ___(___)
+```
+
+````{r count-ages-solution}
+lego_sales %>%
+  count(age_group, sort = TRUE)
+```
+
+```{r count-ages-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "36 - 50"), "You have successfully determined the most common age group."),
+  fail_if(~ identical(as.character(.result[1,1]), "18 and under"), "Did you forget to arrange the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "33"), "Did you count individual ages instead of age groups?"),
+  fail_if(~ identical(as.character(.result[1,1]), "16"), "Did you count individual ages instead of age groups?"),
+  fail_if(~ TRUE, "Not quite. Try using the count function!")
+)
+```
+
+Now, based on your findings, answer the following question:
+
+```{r aqe-groups-quiz}
+question("Which age group is the most common in the dataset?",
+    answer("18 and under"),
+    answer("19 - 25"),
+    answer("26 - 35"),
+    answer("36 - 50",
+           correct = TRUE),
+    answer("51 and over"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+```
+
+## Grouped summaries 
+
+### Quantity of purchases by age
+
+Which age group has purchased the highest number of lego sets?
+
+```{r sales-by-group, exercise = TRUE, exercise.setup = "age-group-setup"}
+lego_sales %>%
+  ___(___) %>%
+  ___(
+    total_n = ___(___)
+  ) %>%
+  arrange(___)
+```
+
+```{r sales-by-group-hint-1}
+lego_sales %>%
+  group_by(___) %>%
+  summarise(
+    total_n = sum(___)
+  ) %>%
+  arrange(___)
+```
+
+```{r sales-by-group-hint-2}
+You need to consider the quantity of purchases.
+```
+
+```{r sales-by-group-hint-3}
+lego_sales %>%
+  group_by(___) %>%
+  summarise(
+    total_n = sum(quantity)
+  ) %>%
+  arrange(desc(___))
+```
+
+```{r sales-by-group-solution}
+lego_sales %>%
+  group_by(age_group) %>%
+  summarise(
+    total_n = sum(quantity)
+  ) %>%
+  arrange(desc(total_n))
+```
+
+```{r sales-by-group-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "36 - 50"), "Your solution is correct!"),
+  fail_if(~ identical(as.character(.result[1,1]), "18 and under"), "Did you forget to sort the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "33"), "Did you count individual ages instead of age groups?"),
+  fail_if(~ identical(as.character(.result[1,1]), "16"), "Did you count individual ages instead of age groups?"),
+  fail_if(~ TRUE, "Not quite. Take a peek at the hint!")
+)
+```
+
+Now, based on your findings, answer the following question:
+
+```{r quiz-sales-by-group}
+question("Which age group has purchased the highest number of lego sets?",
+    answer("18 and under"),
+    answer("19 - 25"),
+    answer("26 - 35"),
+    answer("36 - 50",
+           correct = TRUE),
+    answer("51 and over"),
+    allow_retry = TRUE
+  )
+```
+
+### Most generous age group
+
+Which age group has spent the most money on legos?
+
+```{r age-group-money, exercise = TRUE, exercise.setup = "age-group-setup"}
+lego_sales %>%
+  ___(
+    amount_spent = ___ * ___
+  ) %>%
+  ___(___) %>%
+  ___(
+    total_spent = ___(___)
+  ) %>%
+  arrange(___)
+```
+
+````{r age-group-money-hint-1}
+You will need to consider quantity of purchases as well as price of lego sets.
+```
+
+```{r age-group-money-hint-2}
+lego_sales %>%
+  mutate(
+    amount_spent = ___ * ___
+  ) %>%
+  group_by(___) %>%
+  summarise(
+    total_spent = ___(___)
+  ) %>%
+  arrange(desc(___))
+```
+
+```{r age-group-money-hint-3}
+lego_sales %>%
+  mutate(
+    amount_spent = us_price * quantity
+  ) %>%
+  group_by(age_group) %>%
+  summarise(
+    total_spent = sum(___)
+  ) %>%
+  arrange(desc(___))
+```
+
+```{r age-group-money-solution}
+lego_sales %>%
+  mutate(
+    amount_spent = us_price * quantity
+  ) %>%
+  group_by(age_group) %>%
+  summarise(
+    total_spent = sum(amount_spent)
+  ) %>%
+  arrange(desc(total_spent))
+```
+
+```{r age-group-money-check}
+grade_result(
+  pass_if(~ identical(as.character(.result[1,1]), "36 - 50"), "Your solution is correct!"),
+  fail_if(~ identical(as.character(.result[1,1]), "18 and under"), "Did you forget to sort the counts in descending order?"),
+  fail_if(~ identical(as.character(.result[1,1]), "57"), "Did you count individual ages instead of age groups?"),
+  fail_if(~ TRUE, "Not quite. Take a peek at the hint!")
+)
+```
+
+Now, based on your findings, answer the following question:
+
+```{r spend-by-group}
+question("Which age group has spent the most money on lego sets?",
+    answer("18 and under"),
+    answer("19 - 25"),
+    answer("26 - 35"),
+    answer("36 - 50",
+           correct = TRUE),
+    answer("51 and over"),
+    allow_retry = TRUE,
+    random_answer_order = TRUE
+  )
+```
+
+## Wrap Up
+
+Congratulations, we hope you enjoyed reviewing what we've learned so far!

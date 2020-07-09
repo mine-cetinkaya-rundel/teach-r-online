@@ -1,0 +1,10 @@
+body {
+	font-size: 16px;
+}
+
+.topicsList .topic {
+    font-size: 18px;
+}
+ p.caption {
+   font-size: 0.6em;
+ }
