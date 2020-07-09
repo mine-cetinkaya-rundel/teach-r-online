@@ -49,14 +49,13 @@ knitr::opts_chunk$set(echo = FALSE)
 knitr::include_graphics("images/james-pond-riEYPSKxoTw-unsplash.jpg")
 ```
 
-This week we'll do some data gymnastics to refresh and review what we 
-learned over the past few weeks.
+In this tutorial we will practice data wrangling to refresh and review what we learned over the past few weeks.
 
 ### Learning goals
 
-- Practice the analysis skills you have learned during the last weeks
-- Use independent research to answer a question
-- Deepen your understanding of visualisations
+- Create frequency tables and arrange them in ascending / descending order
+- Convert numerical variables into ordinal variables by grouping ranges
+- Calculate summary statistics for groups in your data
 
 ### Getting help
 
