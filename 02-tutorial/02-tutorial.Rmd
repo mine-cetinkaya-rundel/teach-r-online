@@ -48,12 +48,10 @@ library(jsonlite)
 
 .hand[while we wait to get started...]
 
-- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
-- Log in with Google or GitHub, or create a new account
-- Once you join our workspace, start the assignment titled `COVID-19`
-- Knit the document titled `covid-19.Rmd` and inspect the visualisation
-- Then, in the R Markdown document, change one of the countries plotted to a country of your own choice
-- Knit again, and inspect
+- Go to [INSERT LINK](INSERT LINK)
+- Start working through the tutorial
+- Feel free to make mistakes and test out the feedback
+- If you get to the very end, follow the instructions (but if they seem a bit opaque, don't fret, we'll say more about "submission" later...)
 
 ---
 
@@ -233,6 +231,12 @@ class: middle, inverse
   - Multiple choice questions
   - Videos (YouTube, Vimeo)
   - Interactive Shiny components
+
+- learnr is on CRAN
+
+```{r eval=FALSE}
+install.packages("learnr")
+```
   
 ---
 
@@ -246,11 +250,16 @@ class: middle
 
 ## `r emo::ji("package")` gradethis
 
-Companion to the learnr package, **gradethis** provides multiple methods to grade learnr exercises:
+- Companion to the learnr package, **gradethis** provides multiple methods to grade learnr exercises:
+  - `grade_code()`: Grade code against a solution
+  - `grade_conditions()`: Grade all specified conditions
+  - `grade_result()`: Grade result of exercise code
 
-- `grade_code()`: Grade code against a solution
-- `grade_conditions()`: Grade all specified conditions
-- `grade_result()`: Grade result of exercise code
+- gradethis is not yet on CRAN
+
+```{r eval=FALSE}
+devtools::install_github("rstudio/gradethis")
+```
 
 ---
 
