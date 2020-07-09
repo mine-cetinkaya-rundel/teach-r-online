@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>👩‍🏫 building interactive tutorials in R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="    dr. mine çetinkaya-rundel   dr. colin rundel" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="slides-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# 👩‍🏫 building interactive tutorials in R
+## <br> 🔗 <a href="https://bit.ly/teach-r-online-mats">bit.ly/teach-r-online-mats</a>
+### <br> <br> dr. mine çetinkaya-rundel <br> dr. colin rundel
+
+---
+
+
+
+
+
+layout: true
+  
+&lt;div class="my-footer"&gt;
+&lt;span&gt;
+&lt;a href="https://bit.ly/teach-r-online-mats" target="_blank"&gt;&lt;b&gt;bit.ly/teach-r-online-mats&lt;/b&gt;&lt;/a&gt; - Dr. Mine Çetinkaya-Rundel &amp; Dr. Colin Rundel
+&lt;/span&gt;
+&lt;/div&gt; 
+
+---
+
+
+
+
+
+
+## Activity 
+
+**TO DO: UPDATE**
+
+.hand[while we wait to get started...]
+
+- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
+- Log in with Google or GitHub, or create a new account
+- Once you join our workspace, start the assignment titled `COVID-19`
+- Knit the document titled `covid-19.Rmd` and inspect the visualisation
+- Then, in the R Markdown document, change one of the countries plotted to a country of your own choice
+- Knit again, and inspect
+
+---
+
+.huge-text[you...]
+
+.large[
+- know and teach R
+- are familiar with R Markdown
+- are interested in providing automated feedback
+- might be interested in automated marking
+]
+
+---
+
+class: middle, inverse
+
+.pull-left[
+  .huge-text[why]
+]
+.pull-right[
+  .larger[
+  auto  
+  feedback
+  ]
+]
+
+---
+
+class: middle
+
+.pull-left[
+.center[
+.huge[👉] &lt;br&gt;
+.large[**Nudging**] &lt;br&gt;
+students towards the right answer, especially in formative assessments
+]
+]
+
+---
+
+
+
+.sample-question[
+Suppose 10 means from a simulated sampling distribution is stored in a vector called `means`.
+
+```r
+means
+```
+
+```
+##  [1] -1.21  0.28  1.08 -2.35  0.43  0.51 -0.57 -0.55 -0.56 -0.89
+```
+What is the value of the first mean?
+]
+--
+&lt;br&gt;
+.pull-left-wide[
+.sample-answer[
+
+```r
+mean[1]
+```
+
+```
+## Error in mean[1]: object of type 'closure' is not subsettable
+```
+]
+]
+--
+.pull-right-narrow[
+&lt;img src="images/student.png" width="205" style="display: block; margin: auto 0 auto auto;" /&gt;
+]
+
+---
+
+## Nudging
+
+.hand-blue[Not all feedback is useful, at least not for beginners...]
+
+&lt;br&gt;
+
+Providing helpful feedback can help them nudge them towards success:
+
+
+```r
+mean[1]
+```
+
+
+```
+## x `mean` is a function and a function doesn't have elements that can be subsetted with square brackets.
+```
+
+```
+## ℹ `means` is the vector of sample means calculated earlier.
+```
+
+---
+
+.sample-question[
+Visualise the relationship between city and highway mileage of cars from the `mpg` dataset, conditional on year of manufacture.
+]
+
+--
+&lt;br&gt;
+.sample-answer[
+There is a strong, positive, linear relationship between the city and highway mileage of cars. Year does not seem to be related to either variable.
+
+```r
+ggplot(mpg,aes(x = hwy, y = cty, fill=year)) +geom_point()+geom_smooth()
+```
+
+&lt;img src="02-tutorial_files/figure-html/unnamed-chunk-8-1.png" width="70%" /&gt;
+]
+
+---
+
+class: middle
+
+.pull-left-wide[
+.sample-feedback[
+- You mention a linear relationship, however your plot uses a loess fit to visualise the relationship between city and highway mileage. Also, the plot displays the uncertainty around the fit, but you haven't addressed it in your narrative.
+- Year should be mapped to the `color` aesthetic, not `fill`. 
+- Plot styling: Use informative axis labels, noting units of measurement. Also, give an informative title to your plot.
+- Code styling: Use consistent spacing around operators (e.g ` = `) and line breaks after `+` in each layer of your ggplot.
+]
+]
+.pull-right-narrow[
+&lt;img src="images/teacher.png" width="212" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: middle
+
+.pull-left[
+.center[
+.huge[👉] &lt;br&gt;
+.large[**Nudging**] &lt;br&gt;
+students towards the right answer, especially in formative assessments
+]
+]
+.pull-right[
+.center[
+.huge[➕] &lt;br&gt;
+.large[**Scaling**] &lt;br&gt;
+up efficiency of grading faster than (human) resources
+]
+]
+
+---
+
+## Scaling
+
+.hand-blue[Our courses are growing, and that's a good thing, right?]
+
+--
+
+- Students turning in their work as R Markdown documents makes collecting submissions including code and narrative straightforward.
+
+--
+
+- Providing feedback on both the code and narrative is not scalable unless (human) resources dedicated to your course grow proportionally with enrolments.
+
+---
+
+class: middle, inverse
+
+.pull-left[
+  .huge-text[how]
+]
+.pull-right[
+  .larger[
+  auto  
+  feedback
+  ]
+]
+
+---
+
+## 📦 learnr
+
+- **learnr** is an R package that makes it easy to create interactive tutorials from R Markdown documents.
+
+- Tutorials can include:
+  - Narrative, figures, illustrations, and equations
+  - Code exercises (R code chunks that users can edit and execute directly)
+  - Multiple choice questions
+  - Videos (YouTube, Vimeo)
+  - Interactive Shiny components
+  
+---
+
+background-image: url(images/learnr-first-look.png)
+background-position: center
+background-repeat: no-repeat
+background-size: contain
+class: middle
+
+---
+
+## 📦 gradethis
+
+Companion to the learnr package, **gradethis** provides multiple methods to grade learnr exercises:
+
+- `grade_code()`: Grade code against a solution
+- `grade_conditions()`: Grade all specified conditions
+- `grade_result()`: Grade result of exercise code
+
+---
+
+background-position: center
+background-repeat: no-repeat
+background-size: contain
+class: middle
+
+### Demo: learnr / gradethis
+
+[**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
+
+[**`[code]`**](https://github.com/mine-cetinkaya-rundel/feed-me-back/blob/master/examples/01-learnr-gradethis/nobel-laureates-learnr.Rmd)
+
+---
+
+class: middle, inverse
+
+.huge-text[closing]
+.huge-text[thoughts]
+
+---
+
+## Best practices for automated feedback
+
+--
+
+- Measure twice, cut once (verify the correctness of your tests) 📏📏 ✂️
+
+--
+
+- Use rounding &amp; type coercion to write robust tests 💪
+
+--
+
+- Use hashing to hide solutions for visible tests 🕵️
+
+--
+
+- Test your tests on the students compute environment 💻
+
+--
+
+- Abstract your tests to a script that is sourced/imported into the students literate code document 📁
+
+--
+
+- Don't give automated feedback on everything 🙈
+
+--
+
+- Consider peer feedback where automated feedback is not feasible (e.g. interpretation, narrative) but scalability is an issue 👯
+
+---
+
+class: middle, inverse
+
+.huge-text[faq]
+
+---
+
+.large[
+.hand-blue[Q: What is an approachable way to get started?]
+]
+
+Build a tutorial where students build develop their analysis in exercise code 
+chunks (that are not checked) and only multiple choice questions are used for 
+assessment. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz)
+
+&lt;img src="images/learnr-simple.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.large[
+.hand-blue[Q: Is it possible to record student data?]
+]
+
+Yes, though not trivial, at this point. See [recording events](https://rstudio.github.io/learnr/publishing.html#Recording_Events) section on the learnr documentation and the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+
+A solution that may be "good enough" for formative exercises: embed a 
+Google/Microsoft/etc. Form at the end and ask students to "sign in" their work.
+**Tip:** Add a free-text question to this form where students reflect on the 
+exercises they just completed, and you can easily capture and analyze. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+
+&lt;img src="images/learnr-logging.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.large[
+.hand-blue[Q: I've built simple tutorials already. How do I make the jump to code checking and providing automated feedback that is actually useful?]
+]
+
+- Replicate `gradethis::gradethis_demo()`, then make incremental changes
+- Read the [Testing](https://r-pkgs.org/tests.html#test-tests) chapter in R Packages (Wickham and Bryan) 
+- Also read the [Metaprogramming](https://adv-r.hadley.nz/metaprogramming.html) section in Advanced R (Wickham)
+
+&lt;img src="images/learnr-learn-more.jpeg" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+.hand-large[thank you!]
+
+- All materials at [bit.ly/teach-r-online-mats](https://bit.ly/teach-r-online-mats)
+
+- Sign up for the upcoming workshop at [bit.ly/teach-r-online](https://bit.ly/teach-r-online):
+  - 17 July: Teaching computing with Git and GitHub 
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div>"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
