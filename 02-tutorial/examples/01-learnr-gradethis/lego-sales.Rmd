@@ -39,7 +39,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ---
 
-**This is a demo tutorial created for the "Building interactive tutorials in R" woekshop. See [here](http://bit.ly/teach-r-online-mats) for slides and full set of materials from the breakout session.**
+**This is a demo tutorial created for the "Building interactive tutorials in R" workshop. See [here](http://bit.ly/teach-r-online-mats) for slides and full set of materials from the workshop series.**
 
 ---
 
@@ -89,16 +89,16 @@ The codebook for the dataset is as follows:
 | `last_name` | Last name of customer
 | `age` | Age of customer
 | `phone_number` | Phone number of customer
-| `set_id` | Set ID of lego set purchased
-| `number` | Item number of lego set purchased
-| `theme` | Theme of lego set purchased
-| `subtheme` | Sub theme of lego set purchased
+| `set_id` | Set ID of Lego set purchased
+| `number` | Item number of Legoset purchased
+| `theme` | Theme of Lego set purchased
+| `subtheme` | Sub theme of Lego set purchased
 | `year` | Year of purchase
-| `name` |  Name of lego set purchased
-| `pieces` | Number of pieces of legos in set purchased
+| `name` |  Name of Lego set purchased
+| `pieces` | Number of pieces of Legos in set purchased
 | `us_price` | Price of set purchase in US Dollars
-| `image_url` | Image URL of lego set purchased
-| `quantity` | Quantity of lego set(s) purchased
+| `image_url` | Image URL of Lego set purchased
+| `quantity` | Quantity of Lego set(s) purchased
 
 ## Counting frequencies
 
@@ -149,7 +149,7 @@ question("What are the three most common names?",
 
 ### Most common themes
 
-What are the four most common themes of lego sets purchased? Use the code chunk below to find out!
+What are the four most common themes of Lego sets purchased? Use the code chunk below to find out!
 
 ```{r common-themes, exercise = TRUE}
 lego_sales %>%
@@ -193,7 +193,7 @@ question("What are the four most commonly purchased themes?",
 
 ### Most common subtheme
 
-Among the most common theme of lego sets purchased, what is the most common subtheme?
+Among the most common theme of Lego sets purchased, what is the most common subtheme?
 
 ```{r most-common-subtheme, exercise = TRUE}
 lego_sales %>%
@@ -345,7 +345,7 @@ question("Which age group is the most common in the dataset?",
 
 ### Quantity of purchases by age
 
-Which age group has purchased the highest number of lego sets?
+Which age group has purchased the highest number of Lego sets?
 
 ```{r sales-by-group, exercise = TRUE, exercise.setup = "age-group-setup"}
 lego_sales %>%
@@ -400,7 +400,7 @@ grade_result(
 Now, based on your findings, answer the following question:
 
 ```{r quiz-sales-by-group}
-question("Which age group has purchased the highest number of lego sets?",
+question("Which age group has purchased the highest number of Lego sets?",
     answer("18 and under"),
     answer("19 - 25"),
     answer("26 - 35"),
@@ -413,7 +413,7 @@ question("Which age group has purchased the highest number of lego sets?",
 
 ### Most generous age group
 
-Which age group has spent the most money on legos?
+Which age group has spent the most money on Legos?
 
 ```{r age-group-money, exercise = TRUE, exercise.setup = "age-group-setup"}
 lego_sales %>%
@@ -428,7 +428,7 @@ lego_sales %>%
 ```
 
 ````{r age-group-money-hint-1}
-You will need to consider quantity of purchases as well as price of lego sets.
+You will need to consider quantity of purchases as well as price of Lego sets.
 ```
 
 ```{r age-group-money-hint-2}
@@ -479,7 +479,7 @@ grade_result(
 Now, based on your findings, answer the following question:
 
 ```{r spend-by-group}
-question("Which age group has spent the most money on lego sets?",
+question("Which age group has spent the most money on Lego sets?",
     answer("18 and under"),
     answer("19 - 25"),
     answer("26 - 35"),
