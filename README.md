@@ -11,7 +11,7 @@ The workshops are hosted by the Centre for Statistics at the University of Edinb
 ### Workshop 1: Teaching R online with RStudio Cloud
 #### Friday July 3rd, 2 - 3:30pm BST
 
-### [Slides](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#1)
+### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.pdf)
 
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#2) while we wait to get started...
 
