@@ -327,6 +327,20 @@ See also the [**submitter**](https://github.com/dtkaplan/submitr) package by Dan
 
 ---
 
+## Submissions
+
+Since I've just submitted, my details and my hash will now be stored in a Google Sheet - if you would like to play around with this data (Instructor mode) you can access it here:
+
+.center[ .large[
+https://bit.ly/tutorial-data
+] ]
+
+We don't have time today to demo reading in and decoding these data, but we will include code for the whole process in the [learnrhash package repository](https://github.com/rundel/learnrhash) in the next week, using all of the data you submit.
+
+
+
+---
+
 class: middle, inverse
 
 .huge-text[closing]
