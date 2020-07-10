@@ -263,7 +263,7 @@ class: middle
 - gradethis is not yet on CRAN
 
 ```{r eval=FALSE}
-devtools::install_github("rstudio/gradethis")
+devtools::install_github("rstudio-education/gradethis")
 ```
 
 ---
@@ -348,7 +348,7 @@ If you have any questions about the assignment, please post them on [Piazza](htt
 
 ```{r eval=FALSE}
 quiz(
-  question("What number is the letter A in the alphabet?",
+  question("What position is the letter A in the english alphabet?",
     answer("8"),
     answer("14"),
     answer("1", correct = TRUE),
@@ -388,7 +388,7 @@ question_text(
 ---
 
 .your-turn[
-*We strongly recommend one person in each group to share their screen.*
+*We strongly recommend one person in each group share their screen and everyone work together to work through the document.*
 
 - Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
 - Log in with Google or GitHub, or create a new account
@@ -415,7 +415,7 @@ knitr::include_graphics("images/learnr-exercise-hints.png")
 
 ## Code exercises - code
 
-```{r echo=FALSE, out.width="80%", fig.align="center"}
+```{r echo=FALSE, out.width="75%", fig.align="center"}
 knitr::include_graphics("images/learnr-exercise-code.png")
 ```
 
@@ -471,7 +471,7 @@ knitr::include_graphics("images/learnr-exercise-check-code.png")
 ---
 
 .your-turn[
-*We strongly recommend one person in each group to share their screen.*
+*We again strongly recommend one person in each breakout room share their screen and everyone work together.*
 
 - Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
 - In the assignment titled `Palmer penguins`, open `penguins.Rmd` and click on **Run Document**
