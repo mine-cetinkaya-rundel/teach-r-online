@@ -264,8 +264,6 @@ devtools::install_github("rstudio/gradethis")
 
 ---
 
-class: middle
-
 .huge-text[demo]
 
 .large[
@@ -371,6 +369,51 @@ question_text(
 )
 ```
 
+---
+
+## Code exercises - rendered
+
+```{r echo=FALSE, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-hints.png")
+```
+
+---
+
+## Code exercises - code
+
+```{r echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-code.png")
+```
+
+---
+
+## Code exercises - solution
+
+```{r echo=FALSE, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-submit.png")
+```
+
+```{r echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-solution.png")
+```
+
+---
+
+some activity...
+
+---
+
+class: middle, inverse
+
+.huge-text[gradethis]
+
+---
+
+some gradethis stuff...
+
+---
+
+some activity...
 
 ---
 
@@ -407,27 +450,32 @@ Yes, though not trivial, at this point.
 
 ---
 
-## Recording Attempts
+## Recording attempts
 
-A "good enough" solution for formative exercises: embed a 
+- A "good enough" solution for formative exercises: embed a 
 Google/Microsoft/etc. Form at the end and ask students to "submit" their work.
 
-This only records that the student reached the end of the tutorial and not how (or even if) they answered any of the questions or exercises.
+- This only records that the student reached the end of the tutorial and not how (or even if) they answered any of the questions or exercises.
 
-**Tip:** Adding a free-text question to the form asking students to reflect on the 
-exercises they just completed - this is then recorded and can be analyzed. [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+- **Tip:** Add a free-text question to the form asking students to reflect on the exercises they just completed - you can then analyse the free-text data to gain insights into what students are struggling with -- "minute paper".
+
+[**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
 
 ---
 
-## Recording Solutions
+## Recording solutions
 
-The [`learnrhash`](https://github.com/rundel/learnrhash) package builds on the previous method by providing a way for students to submit their answers by generating a text "hash" which can be copy and pasted into the web form.
+- The [`learnrhash`](https://github.com/rundel/learnrhash) package builds on the previous method by providing a way for students to submit their answers by generating a text "hash" which can be copy and pasted into the web form.
 
-This package is being used to create the submission tool at the end of the sample tutorial.
+```{r eval=FALSE}
+devtools::install_github("rundel/learnrhash")
+```
+
+- This package is being used to create the submission tool at the end of the sample tutorial.
 
 
 .footnote[
-See also the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+See also the [**submitr**](https://github.com/dtkaplan/submitr) package by Danny Kaplan for a different approach to recording event data in learnr tutorials.
 ]
 
 ---
@@ -450,9 +498,7 @@ Since I've just submitted, my details and my hash will now be stored in a Google
 https://bit.ly/tutorial-data
 ] ]
 
-We don't have time today to demo reading in and decoding these data, but we will include code for the whole process in the [learnrhash package repository](https://github.com/rundel/learnrhash) in the next week, using all of the data you submit.
-
-
+We don't have time today to demo reading in and decoding these data, but we will include code for the whole process in the [learnrhash package repository](https://github.com/rundel/learnrhash) in the next week, using data from your submissions.
 
 ---
 
