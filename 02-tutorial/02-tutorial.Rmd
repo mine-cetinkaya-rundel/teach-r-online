@@ -125,7 +125,7 @@ knitr::include_graphics("images/student.png")
 
 ## Nudging
 
-.hand-blue[Not all feedback is useful, at least not for beginners...]
+.hand[Not all feedback is useful, at least not for beginners...]
 
 <br>
 
@@ -196,7 +196,7 @@ up efficiency of grading faster than (human) resources
 
 ## Scaling
 
-.hand-blue[Our courses are growing, and that's a good thing, right?]
+.hand[Our courses are growing, and that's a good thing, right?]
 
 --
 
@@ -264,16 +264,31 @@ devtools::install_github("rstudio/gradethis")
 
 ---
 
-background-position: center
-background-repeat: no-repeat
-background-size: contain
 class: middle
 
-### Demo: learnr / gradethis
+.huge[demo]
 
 [**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
 
 [**`[code]`**](https://github.com/mine-cetinkaya-rundel/feed-me-back/blob/master/examples/01-learnr-gradethis/nobel-laureates-learnr.Rmd)
+
+---
+
+class: middle, inverse
+
+.huge-text[sharing]
+
+---
+
+## Sharing with students
+
+- You could share the R Markdown document (and all accompanying files) but that’s probably not what you want to do...
+
+- Deploy on
+  - shinyapps.io
+  - RStudio Connect (free for academic use, requires setup)
+
+- Road less travelled: distribute as a package
 
 ---
 
@@ -285,7 +300,7 @@ class: middle, inverse
 ---
 
 .large[
-.hand-blue[Q: Is it possible to record student data?]
+.hand[Q: Is it possible to record student data?]
 ]
 
 Yes, though not trivial, at this point. 
@@ -369,7 +384,7 @@ class: middle, inverse
 ---
 
 .large[
-.hand-blue[Q: What is an approachable way to get started?]
+.hand[Q: What is an approachable way to get started?]
 ]
 
 Build a tutorial where students build develop their analysis in exercise code 
@@ -383,7 +398,7 @@ knitr::include_graphics("images/learnr-simple.png")
 ---
 
 .large[
-.hand-blue[Q: I've built simple tutorials already. How do I make the jump to code checking and providing automated feedback that is actually useful?]
+.hand[Q: I've built simple tutorials already. How do I make the jump to code checking and providing automated feedback that is actually useful?]
 ]
 
 - Replicate `gradethis::gradethis_demo()`, then make incremental changes
@@ -393,6 +408,19 @@ knitr::include_graphics("images/learnr-simple.png")
 ```{r echo=FALSE, out.width="75%", fig.align="center"}
 knitr::include_graphics("images/learnr-learn-more.jpeg")
 ```
+
+---
+
+.large[
+.hand[Q: Sounds great, but can it handle my class size and usage?]
+]
+
+- First, chances are you're not using these live, but you might be...
+- If so, make sure to max out your instances and instance size on shinyapps.io.
+- Essential reading:
+  - [Publishing learnr Tutorials on shinyapps.io](https://cran.r-project.org/web/packages/learnr/vignettes/shinyapps-publishing.html) by Angela Li
+  - [Teach R with learnr: a powerful tool for remote teaching](https://education.rstudio.com/blog/2020/05/learnr-for-remote/) by Allison Horst
+
 
 ---
 
