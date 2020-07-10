@@ -275,11 +275,116 @@ devtools::install_github("rstudio/gradethis")
 
 class: middle
 
-.huge[demo]
+.huge-text[demo]
 
+.large[
 [**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
 
-[**`[code]`**](https://github.com/mine-cetinkaya-rundel/feed-me-back/blob/master/examples/01-learnr-gradethis/nobel-laureates-learnr.Rmd)
+[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales.Rmd)
+]
+
+---
+
+class: middle, inverse
+
+.huge-text[learnr]
+
+---
+
+## YAML
+
+Start with a YAML, just like in R Markdown:
+
+
+```r
+---
+title: "Lego Sales"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    css: "css/font-size.css"
+runtime: shiny_prerendered
+---
+```
+
+- `runtime: shiny_prerendered`
+- `progressive: true` for continue buttons between subsections
+- `alow_skip: true` to allow skipping exercises
+
+---
+
+## Customization
+
+- You can change the style of your learnr tutorial
+- You might, at a minimum, implement a couple customizations for accessibility:
+  - Increase font size in the narrative, using a CSS file that lives in a directory called `css` and loaded in the YAML with
+
+
+```r
+css: "css/font-size.css"
+```
+
+  - Increase font size in code boxes, using a JS file that lives in a directory called `js` and loaded with 
+  
+
+```r
+&lt;script language="JavaScript" src="js/exercise-font-size.js"&gt;&lt;/script&gt;
+```
+  
+---
+
+## Narrative
+
+- R Markdown style section and subsection headings with `##`, `###`, etc.
+- Text, figures, illustrations, and equations.
+- Videos: supported services include YouTube and Vimeo
+
+---
+
+## Multiple choice questions
+
+
+```r
+quiz(
+  question("What number is the letter A in the alphabet?",
+    answer("8"),
+    answer("14"),
+    answer("1", correct = TRUE),
+    answer("23"),
+    incorrect = "See [here](https://en.wikipedia.org/wiki/English_alphabet) and try again.",
+    allow_retry = TRUE
+  ),
+
+  question("Where are you right now? (select ALL that apply)",
+    answer("Planet Earth", correct = TRUE),
+    answer("Pluto"),
+    answer("At a computing device", correct = TRUE),
+    answer("In the Milky Way", correct = TRUE),
+    incorrect = paste0("Incorrect. You're on Earth, ",
+                       "in the Milky Way, at a computer.")
+  )
+)
+```
+
+---
+
+## Text entry questions
+
+
+```r
+question_text(
+  "Please enter the word 'C0rrect' below:",
+  answer("correct", message = "Don't forget to capitalize"),
+  answer("c0rrect", message = "Don't forget to capitalize"),
+  answer("Correct", message = "Is it really an 'o'?"),
+  answer("C0rrect ", message = "Make sure you do not have a trailing space"),
+  answer("C0rrect", correct = TRUE),
+  allow_retry = TRUE,
+  trim = FALSE
+)
+```
+
 
 ---
 
