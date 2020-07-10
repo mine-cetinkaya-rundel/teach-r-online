@@ -666,6 +666,20 @@ knitr::include_graphics("images/learnr-learn-more.jpeg")
   - [Publishing learnr Tutorials on shinyapps.io](https://cran.r-project.org/web/packages/learnr/vignettes/shinyapps-publishing.html) by Angela Li
   - [Teach R with learnr: a powerful tool for remote teaching](https://education.rstudio.com/blog/2020/05/learnr-for-remote/) by Allison Horst
 
+---
+
+.large[
+.hand[Q: Where can I find more examples?]
+]
+
+* Both the learnr package and gradethis have a large number of examples, e.g.
+```{r eval=FALSE}
+gradethis::gradethis_demo()
+```
+
+* [RStudio Cloud Primers](https://rstudio.cloud/learn/primers) - these are all learnr tutorials and their code is available on [github](https://github.com/rstudio-education/primers).
+
+* [Data Science in a Box](http://datasciencebox.org) - we will be adding learnr tutorials we develop here.
 
 ---
 
