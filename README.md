@@ -25,7 +25,7 @@ RStudio Cloud is a lightweight and easy to set up / use solution to teaching R o
 ### Workshop 2: Building interactive tutorials in R
 #### Friday July 10th, 2 - 3:30pm BST
 
-### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/02-tutorial.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-cloud/02-tutorial.pdf)
+### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.pdf)
 
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.html#2) while we wait to get started...
 
