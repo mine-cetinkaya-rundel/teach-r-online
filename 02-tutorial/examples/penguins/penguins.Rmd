@@ -1,0 +1,117 @@
+---
+title: "Palmer penguins"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    css: "css/font-size.css"
+runtime: shiny_prerendered
+---
+
+<!-- Add JavaScript code for making the exercise code larger -->
+<script language="JavaScript" src="js/exercise-font-size.js"></script>
+
+```{r setup, include=FALSE}
+# packages
+library(learnr)
+library(tidyverse)
+#devtools::install_github("rstudio-education/gradethis")
+library(gradethis)
+#devtools::install_github("rundel/learnrhash")
+library(learnrhash)
+
+# tutorial options
+tutorial_options(
+  # code running in exercise times out after 30 seconds
+  exercise.timelimit = 30, 
+  # use gradethis for checking
+  exercise.checker = gradethis::grade_learnr
+  )
+
+# make lego sales data frame globally available
+lego_sales <- read_csv("https://rb.gy/shkc8g")
+
+# for grouped summary exercises
+lego_sales <- lego_sales %>%
+  mutate(age_group = case_when(
+    age <= 18             ~ "18 and under",
+    age >= 19 & age <= 25 ~ "19 - 25",
+    age >= 26 & age <= 35 ~ "26 - 35",
+    age >= 36 & age <= 50 ~ "36 - 50",
+    age >= 51             ~ "51 and over"
+    ))
+
+# hide non-exercise code chunks
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**This is a demo tutorial created for the "Building interactive tutorials in R" workshop. See [here](http://bit.ly/teach-r-online-mats) for slides and full set of materials from the workshop series.**
+
+---
+
+## Introduction
+
+```{r stormtrooper, fig.margin = TRUE, echo = FALSE, fig.width=3, out.width = "100%", fig.cap="Illustration by Allison Horst."}
+knitr::include_graphics("images/lter_penguins.png")
+```
+
+Data were collected and made available by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/). 
+
+The data are distributed in the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) package. 
+
+
+### Learning goals
+
+- Practice developing exercises with learnr.
+- Practice writing code checking tests with gradethis.
+
+### Getting help
+
+If you have any questions call for help in Zoom!
+
+### Packages
+
+In this assignment we will work with the **palmerpenguins** and **tidyverse** packages. So let's go ahead and load them!
+
+```{r load-package, exercise = TRUE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Multiple choice question
+
+Modify the following question to:
+
+- Allow retry for incorrect answers
+- Display answers in a random order
+- Customise the message text for correct answer
+- Customise the message texts for incorrect answers (try giving different pieces of feedback for different incorrect answers)
+- Modify the penguin color question to allow multiple correct answers
+- Place the two questions in a `quiz()`
+
+```{r awesome-penguins}
+question(
+  "How awesome are penguins?",
+  answer("Super awesome!", correct = TRUE),
+  answer("Awesome"),
+  answer("Meh"),
+  answer("Not awesome"),
+  answer("Super not awesome")
+)
+```
+
+```{r penguin-colors}
+question(
+  "Penguins are which of the following colors?",
+  answer("Black", correct = TRUE),
+  answer("White"),
+  answer("Magenta"),
+  answer("Cyan")
+)
+```
+
+
+
+

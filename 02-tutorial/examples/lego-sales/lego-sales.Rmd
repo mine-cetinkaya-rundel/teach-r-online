@@ -17,11 +17,16 @@ library(learnr)
 library(tidyverse)
 #devtools::install_github("rstudio-education/gradethis")
 library(gradethis)
-#devtools::install_github("rundel/learnhash")
+#devtools::install_github("rundel/learnrhash")
 library(learnrhash)
 
-# use gradethis for checking. No timelimit
-tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+# tutorial options
+tutorial_options(
+  # code running in exercise times out after 30 seconds
+  exercise.timelimit = 30, 
+  # use gradethis for checking
+  exercise.checker = gradethis::grade_learnr
+  )
 
 # make lego sales data frame globally available
 lego_sales <- read_csv("https://rb.gy/shkc8g")
