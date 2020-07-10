@@ -115,9 +115,7 @@ penguins %>%
 ```
 
 ```{r penguins-count-hint-2}
-penguins %>%
-  filter(island == "Biscoe") %>%
-  count(species, ___)
+Add a hint...
 ```
 
 ```{r penguins-count-solution}

@@ -43,11 +43,9 @@ layout: true
 
 ## Activity 
 
-**TO DO: UPDATE**
-
 .hand[while we wait to get started...]
 
-- Go to [INSERT LINK](INSERT LINK)
+- Go to [INSERT LINK](https://gallery.shinyapps.io/lego-sales/)
 - Start working through the tutorial
 - Feel free to make mistakes and test out the feedback
 - If you get to the very end, follow the instructions (but if they seem a bit opaque, don't fret, we'll say more about "submission" later...)
@@ -282,9 +280,9 @@ devtools::install_github("rstudio/gradethis")
 .huge-text[demo]
 
 .large[
-[**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
+[**`[tutorial]`**](https://gallery.shinyapps.io/lego-sales/) 
 
-[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales.Rmd)
+[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales/lego-sales.Rmd)
 ]
 
 ---
@@ -411,11 +409,11 @@ question_text(
 - Log in with Google or GitHub, or create a new account
 - Once you join our workspace, start the assignment titled `Palmer penguins`
 - Open `penguins.Rmd` and click on **Run Document**
-- Read the instructions under `Multiple choice question`
+- Read the instructions under `Multiple choice questions`
 - See help for `?question()` and `?quiz()` and don't hesitate to call for help!
 ]
 
-<div class="countdown" id="timer_5f084920" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f0853c5" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -471,20 +469,40 @@ class: middle, inverse
 
 ---
 
+.your-turn[
+*We strongly recommend one person in each group to share their screen.*
+
+- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
+- In the assignment titled `Palmer penguins`, open `penguins.Rmd` and click on **Run Document**
+- Read the instructions under `Code exercises`
+- Write more hints and code checking tests 
+]
+
+<div class="countdown" id="timer_5f085595" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
 ## Other checking options
 
 - `grade_code()`: Grade code against a solution
 - `grade_conditions()`: Grade all specified conditions
+- See `gradethis::gradethis_demo()` for a walk through of how each of these options work
 
 ---
 
-## Known issues
+## Known challenges
 
-... that we think will be fixed soon
+--
 
-- Currently learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result
+- Currently learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result -- we think this will be fixed soon [[PR]](https://github.com/rstudio/learnr/pull/373).
 
-- If code in the exercise chunk is invalid
+--
+
+- If code in the exercise chunk is invalid, you might get the R error instead:
+
+&lt;img src="images/learnr-code-error.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -504,20 +522,14 @@ class: middle, inverse
 
 - Road less travelled: distribute as a package
 
+- See the [publishing instructions](https://rstudio.github.io/learnr/publishing.html) on the learnr website for step-by-step instructions
+
 ---
 
 class: middle, inverse
 
 .huge-text[recording]
 .huge-text[data]
-
----
-
-.large[
-.hand[Q: Is it possible to record student data?]
-]
-
-Yes, though not trivial, at this point. 
 
 ---
 
@@ -555,9 +567,9 @@ See also the [**submitr**](https://github.com/dtkaplan/submitr) package by Danny
 .huge-text[demo]
 
 .large[
-[**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
+[**`[tutorial]`**](https://gallery.shinyapps.io/lego-sales/) 
 
-[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales.Rmd)
+[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales/lego-sales.Rmd)
 ]
 
 ---
