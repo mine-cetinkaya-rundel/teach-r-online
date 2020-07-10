@@ -344,7 +344,6 @@ css: "css/font-size.css"
 If you have any questions about the assignment, please post them on [Piazza](https://piazza.com)!
 ```
 
-
 ---
 
 ## Multiple choice questions
@@ -390,6 +389,24 @@ question_text(
 
 ---
 
+.your-turn[
+*We strongly recommend one person in each group to share their screen.*
+
+- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
+- Log in with Google or GitHub, or create a new account
+- Once you join our workspace, start the assignment titled `Palmer penguins`
+- Open `penguins.Rmd` and click on **Run Document**
+- Read the instructions under `Multiple choice question`
+- See help for `?question()` and `?quiz()` and don't hesitate to call for help!
+]
+
+```{r echo=FALSE}
+countdown(minutes = 10)
+```
+
+
+---
+
 ## Code exercises - rendered
 
 ```{r echo=FALSE, out.width="85%", fig.align="center"}
@@ -418,21 +435,57 @@ knitr::include_graphics("images/learnr-exercise-solution.png")
 
 ---
 
-some activity...
-
----
-
 class: middle, inverse
 
 .huge-text[gradethis]
 
 ---
 
-some gradethis stuff...
+```{r echo=FALSE, out.width="85%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-check-1.png")
+```
 
 ---
 
-some activity...
+```{r echo=FALSE, out.width="75%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-check-2.png")
+```
+
+---
+
+```{r echo=FALSE, out.width="75%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-check-3.png")
+```
+
+---
+
+## Checking the result
+
+- Use a code chunk with the same label, suffixed with `-check`
+- `.result` refers to the resulting output
+- Think about ways things can go wrong and write test cases for them
+- Write a "catch all" test case for everything else
+
+```{r echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("images/learnr-exercise-check-code.png")
+```
+
+---
+
+## Other checking options
+
+- `grade_code()`: Grade code against a solution
+- `grade_conditions()`: Grade all specified conditions
+
+---
+
+## Known issues
+
+... that we think will be fixed soon
+
+- Currently learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result
+
+- If code in the exercise chunk is invalid
 
 ---
 

@@ -7,6 +7,8 @@
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="slides-style.css" type="text/css" />
   </head>
@@ -355,7 +357,6 @@ css: "css/font-size.css"
 If you have any questions about the assignment, please post them on [Piazza](https://piazza.com)!
 ```
 
-
 ---
 
 ## Multiple choice questions
@@ -403,6 +404,24 @@ question_text(
 
 ---
 
+.your-turn[
+*We strongly recommend one person in each group to share their screen.*
+
+- Go to [bit.ly/teach-r-online-cloud](https://bit.ly/teach-r-online-cloud)
+- Log in with Google or GitHub, or create a new account
+- Once you join our workspace, start the assignment titled `Palmer penguins`
+- Open `penguins.Rmd` and click on **Run Document**
+- Read the instructions under `Multiple choice question`
+- See help for `?question()` and `?quiz()` and don't hesitate to call for help!
+]
+
+<div class="countdown" id="timer_5f084920" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+---
+
 ## Code exercises - rendered
 
 &lt;img src="images/learnr-exercise-hints.png" width="85%" style="display: block; margin: auto;" /&gt;
@@ -423,21 +442,49 @@ question_text(
 
 ---
 
-some activity...
-
----
-
 class: middle, inverse
 
 .huge-text[gradethis]
 
 ---
 
-some gradethis stuff...
+&lt;img src="images/learnr-exercise-check-1.png" width="85%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-some activity...
+&lt;img src="images/learnr-exercise-check-2.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="images/learnr-exercise-check-3.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Checking the result
+
+- Use a code chunk with the same label, suffixed with `-check`
+- `.result` refers to the resulting output
+- Think about ways things can go wrong and write test cases for them
+- Write a "catch all" test case for everything else
+
+&lt;img src="images/learnr-exercise-check-code.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Other checking options
+
+- `grade_code()`: Grade code against a solution
+- `grade_conditions()`: Grade all specified conditions
+
+---
+
+## Known issues
+
+... that we think will be fixed soon
+
+- Currently learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result
+
+- If code in the exercise chunk is invalid
 
 ---
 
