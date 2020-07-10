@@ -395,7 +395,7 @@ question_text(
 - Once you join our workspace, start the assignment titled `Palmer penguins`
 - Open `penguins.Rmd` and click on **Run Document**
 - Read the instructions under `Multiple choice questions`
-- See help for `?question()` and `?quiz()` and don't hesitate to call for help!
+- See help for `?question` and `?quiz` and don't hesitate to call for help!
 ]
 
 ```{r echo=FALSE}
