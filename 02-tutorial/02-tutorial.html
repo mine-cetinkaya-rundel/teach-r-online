@@ -413,7 +413,7 @@ question_text(
 - See help for `?question()` and `?quiz()` and don't hesitate to call for help!
 ]
 
-<div class="countdown" id="timer_5f0854d8" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f0859f2" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -478,7 +478,7 @@ class: middle, inverse
 - Write more hints and code checking tests 
 ]
 
-<div class="countdown" id="timer_5f085419" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f08583e" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -492,11 +492,22 @@ class: middle, inverse
 
 ---
 
+## Keep in mind!
+
+- Exercise chunks run in independent sessions, they don't actually work like R Markdown chunks (i.e. they don't remember what happened before)
+
+- Use setup chunks to make the tutorial experience feel more like a data analysis story
+
+- Leverage this feature to write robust code and checks
+
+
+---
+
 ## Known challenges
 
 --
 
-- Currently learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result -- we think this will be fixed soon [[PR]](https://github.com/rstudio/learnr/pull/373).
+- Currently (July 2020) learnr gives a warning if the exercise code chunk produces an invisible result, e.g. code chunk makes an assignment instead of outputting a result -- this might be fixed soon [[PR]](https://github.com/rstudio/learnr/pull/373)
 
 --
 
@@ -542,7 +553,9 @@ Google/Microsoft/etc. Form at the end and ask students to "submit" their work.
 
 - **Tip:** Add a free-text question to the form asking students to reflect on the exercises they just completed - you can then analyse the free-text data to gain insights into what students are struggling with -- "minute paper".
 
+.large[
 [**`[example]`**](https://minecr.shinyapps.io/04-wrangleviz/#section-finish-up)
+]
 
 ---
 
@@ -579,10 +592,10 @@ See also the [**submitr**](https://github.com/dtkaplan/submitr) package by Danny
 Since I've just submitted, my details and my hash will now be stored in a Google Sheet - if you would like to play around with this data (Instructor mode) you can access it here:
 
 .center[ .large[
-https://bit.ly/tutorial-data
+[**`[tutorial-data]`**](https://bit.ly/tutorial-data)
 ] ]
 
-We don't have time today to demo reading in and decoding these data, but we will include code for the whole process in the [learnrhash package repository](https://github.com/rundel/learnrhash) in the next week, using data from your submissions.
+We don't have time today to demo reading in and decoding these data, but we will include code for the whole process in the **[learnrhash package repository](https://github.com/rundel/learnrhash)** in the next week, using data from your submissions.
 
 ---
 
