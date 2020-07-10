@@ -1,0 +1,12 @@
+name: lego-sales
+title: lego-sales
+username:
+account: openintro
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2555790
+bundleId: 3375493
+url: https://openintro.shinyapps.io/lego-sales/
+when: 1594371064.33579
+asMultiple: FALSE
+asStatic: FALSE

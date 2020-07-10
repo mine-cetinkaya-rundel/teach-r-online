@@ -229,6 +229,10 @@ class: middle, inverse
 
 ---
 
+&lt;img src="images/puzzle-pieces.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+
 ## 📦 learnr
 
 - **learnr** is an R package that makes it easy to create interactive tutorials from R Markdown documents.
@@ -307,7 +311,7 @@ runtime: shiny_prerendered
 ```
 
 - `runtime: shiny_prerendered`
-- `progressive: true` for continue buttons between subsections
+- `progressive: true` for "Continue" buttons between subsections
 - `alow_skip: true` to allow skipping exercises
 
 ---
@@ -316,14 +320,14 @@ runtime: shiny_prerendered
 
 - You can change the style of your learnr tutorial
 - You might, at a minimum, implement a couple customizations for accessibility:
-  - Increase font size in the narrative, using a CSS file that lives in a directory called `css` and loaded in the YAML with
+  - Increase font size in the narrative, using a [CSS file](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/css/font-size.css) that lives in a directory called `css/` and loaded in the YAML with
 
 
 ```r
 css: "css/font-size.css"
 ```
 
-  - Increase font size in code boxes, using a JS file that lives in a directory called `js` and loaded with 
+  - Increase font size in code boxes, using a [JS file](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/js/exercise-font-size.js) that lives in a directory called `js/` and loaded with 
   
 
 ```r
@@ -337,6 +341,20 @@ css: "css/font-size.css"
 - R Markdown style section and subsection headings with `##`, `###`, etc.
 - Text, figures, illustrations, and equations.
 - Videos: supported services include YouTube and Vimeo
+
+
+```r
+### Learning goals
+
+- Create frequency tables and arrange them in ascending / descending order
+- Convert numerical variables into ordinal variables by grouping ranges
+- Calculate summary statistics for groups in your data
+
+### Getting help
+
+If you have any questions about the assignment, please post them on [Piazza](https://piazza.com)!
+```
+
 
 ---
 
