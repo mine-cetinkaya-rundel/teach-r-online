@@ -27,7 +27,7 @@ RStudio Cloud is a lightweight and easy to set up / use solution to teaching R o
 
 ### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/02-tutorial.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-cloud/02-tutorial.pdf)
 
-### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#2) while we wait to get started...
+### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.html#2) while we wait to get started...
 
 The learnr R package provides a new multimedia approach for teaching statistics and programming with R. Building on R Markdown, this package allows teachers to create interactive tutorials containing narrative, figures, illustrations, and equations, code exercises (R code chunks that users can edit and execute directly), multiple choice quiz questions, videos, and interactive Shiny components. Tutorials built with this tool can be used for checking and reinforcing students' understanding and have the benefit of being self-paced and provide instant feedback. We will demonstrate how to use the learnr package to build interactive R tutorials and discuss best practices for using them.  
 **Registration:** [smartsurvey.co.uk/s/10FXRD](https://www.smartsurvey.co.uk/s/10FXRD/)

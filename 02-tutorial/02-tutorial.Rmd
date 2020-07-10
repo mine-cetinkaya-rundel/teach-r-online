@@ -47,7 +47,7 @@ library(usethis)
 
 .hand[while we wait to get started...]
 
-- Go to [INSERT LINK](https://gallery.shinyapps.io/lego-sales/)
+- Go to [gallery.shinyapps.io/lego-sales](https://gallery.shinyapps.io/lego-sales/)
 - Start working through the tutorial
 - Feel free to make mistakes and test out the feedback
 - If you get to the very end, follow the instructions (but if they seem a bit opaque, don't fret, we'll say more about "submission" later...)
