@@ -310,14 +310,19 @@ The [`learnrhash`](https://github.com/rundel/learnrhash) package builds on the p
 
 This package is being used to create the submission tool at the end of the sample tutorial.
 
---
-
-.center[ .huge-text[
-Demo
-] ]
 
 .footnote[
 See also the [**submitter**](https://github.com/dtkaplan/submitr) package by Danny Kaplan.
+]
+
+---
+
+.huge-text[demo]
+
+.large[
+[**`[tutorial]`**](https://minecr.shinyapps.io/nobel-laureates-learnr) 
+
+[**`[code]`**](https://github.com/mine-cetinkaya-rundel/teach-r-online/blob/master/02-tutorial/examples/lego-sales.Rmd)
 ]
 
 ---
