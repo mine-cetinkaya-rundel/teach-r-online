@@ -4,3 +4,4 @@
 .Ruserdata
 *.key
 .DS_Store
+rsconnect/
