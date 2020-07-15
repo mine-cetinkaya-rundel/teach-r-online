@@ -13,6 +13,8 @@ The workshops are hosted by the Centre for Statistics at the University of Edinb
 
 ### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.pdf)
 
+### [Video](https://media.ed.ac.uk/media/t/1_bz9yza6s)
+
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#2) while we wait to get started...
 
 RStudio Cloud is a lightweight and easy to set up / use solution to teaching R online, in the browser. In this webinar we will walk you through the steps of setting up your course on RStudio Cloud, highlighting the various functionalities for teachers and students. We will also discuss best practices and provide opportunities for interacting with RStudio Cloud from the student and the instructor perspectives.  
