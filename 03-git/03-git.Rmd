@@ -40,6 +40,8 @@ library(tidyverse)
 
 ## Activity 
 
+**to do: needs to be updated**
+
 .hand[while we wait to get started...]
 
 - Go to [gallery.shinyapps.io/lego-sales](https://gallery.shinyapps.io/lego-sales/)
