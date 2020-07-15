@@ -1,5 +1,5 @@
 ---
-title: "`r emo::ji('tape')` teaching computing with Git and GitHub"
+title: "`r emo::ji('tape')` teaching computing with Git & GitHub"
 subtitle: "<br> `r emo::ji('link')` [bit.ly/teach-r-online-mats](https://bit.ly/teach-r-online-mats)"
 author: "<br> <br> dr. mine çetinkaya-rundel <br> dr. colin rundel"
 output:
