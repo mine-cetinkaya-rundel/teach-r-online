@@ -39,6 +39,17 @@ layout: true
 
 
 
+```r
+library(ghclass)
+```
+
+
+
+
+
+
+
+
 
 
 ## Activity 
@@ -57,8 +68,8 @@ layout: true
 .huge-text[you...]
 
 .large[
-- know and teach R
-- are familiar with Git and GitHub
+- are familiar with R
+- are familiar with git and GitHub
 - are interested in teaching version control
 - are interested in using GitHub as your learning management system
 - might be interested in automation tools offered by GitHub for auto feedback
@@ -80,12 +91,15 @@ class: middle, inverse
 
 ---
 
-- **Version control:** Lots of mistakes along the way, need ability to revert
+- **Version control:** mistakes are inevitable, need ability to revert
+
 - **Collaboration:** Platform that removes barriers to well documented collaboration
+
 - **Accountability:** Transparent commit history
+
 - **Early introduction:** 
-  - Mastery takes time, earlier start the better
-  - Marketability
+  - Mastery takes time, earlier the better
+  - Portfolios &amp; Marketability
 
 ---
 
@@ -95,7 +109,7 @@ class: middle, inverse
 
 - Enable students to work collaboratively
 
-- Force students to use git &amp; GitHub
+- Force students to use (learn) git &amp; GitHub
   - Version control is a best practice for reproducible research
   - Widely used in industry 
   - Publish / share work
@@ -117,88 +131,92 @@ On Github
 
 - 1 repo / (student or team) / assignment
 
-- Student and team repos all private by default
+- Student and team repos are all private by default
+
+- Students are added to org as members (membership is not public by default)
+
+- Tutors / TAs are added to org as admins / owners
 
 ---
 
-## Setting up a course
+## Basic Workflows
 
-1. Create course organization on GitHub (https://github.com/organizations/new)
-1. Request education discount for organization (https://education.github.com/discount)
-1. Invite students to organization
+1. Create organization
+
+1. Invite students
+
 1. Create assignment(s)
-1. Collect assignments(s)
-1. Grade assignment(s)
+
+1. Collect and or grade assignments(s) 
+
 
 ---
 
 ## Create course organization
 
-&lt;img src="img/org-create.png" width="495" /&gt;
+.center[
+https://github.com/organizations/new
+]
+
+&lt;img src="img/org-create.png" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## Request education discount
+## Create course organization
 
-&lt;br&gt;
+&lt;img src="img/org-create2.png" width="60%" style="display: block; margin: auto;" /&gt;
 
-.pull-left[
-&lt;img src="img/ed-discount.png" width="491" /&gt;
-]
-.pull-right[
-&lt;img src="img/ed-about.png" width="491" /&gt;
-]
 
 ---
 
-## Required information
+## Education discount
 
-When requesting the discount you will need to provide the following:
+While no longer required, GitHub offers a number of education benefits which you can register for here: https://education.github.com/benefits.
 
-- A brief description of the purpose for the GitHub organization and how you plan to use GitHub
+Of particular note are:
 
-- Establishing connection to an academic institution by verifying with an `.edu` email + photo of your school id.
+- Free GitHub swag here
+  - https://education.github.com/toolbox/offers#github_swag
 
-- Link to relevant website for the class / workshop / research group
-
-- Verification is manual and can take between a couple hours to a couple days.
+- Free Team plans for academic organizations and Pro plan for educators
+  - https://education.github.com/toolbox/offers#github
 
 ---
 
-## Invite students
+## Org Setup
 
-&lt;br&gt;
-
-.pull-left[
-&lt;img src="img/org-people.png" width="643" /&gt;
-]
-.pull-right[
-&lt;img src="img/org-invite.png" width="335" /&gt;
-]
+&lt;img src="img/org-people.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Member Privileges
 
-&lt;img src="img/member-priv1.png" width="683" /&gt;
+&lt;img src="img/member-priv.png" width="683" /&gt;
 
 ---
 
-## Member Privileges (cont.)
+## Invite students
 
-&lt;img src="img/member-priv2.png" width="489" /&gt;
+&lt;img src="img/org-invite.png" width="90%" style="display: block; margin: auto;" /&gt;
 
----
+--
 
-## Member Privileges (cont.)
-
-&lt;img src="img/member-priv3.png" width="396" /&gt;
+.center[ .large[
+.hand[ x 150 students ... ]
+] ]
 
 ---
 
 class: middle
 
-.hand[ at this point, doing things on the GitHub UI starts to get quite tedious... ]
+.hand[ at this scale, doing anything with the GitHub UI starts to get quite tedious... ]
+
+
+
+
+---
+
+
 
 ---
 
@@ -210,11 +228,13 @@ class: middle, inverse
 
 ## 📦 ghclass
 
-### Tools for managing github class organization accounts
+- Design to automate interactions with GitHub (via its API) for class management
 
-- Made for instructors who use GitHub for class management, e.g. students submit assignments via GitHub repos
-- The package assumes that you’re an R user, and you probably teach R as well, though that’s not a requirement since this package is all about setting up repositories with the right permissions, not what your students put in those repositories.
-- The package is still under active development and is not currently on CRAN but can be installed from GitHub using:
+- The package is ~4 years old and still under active development
+
+- Detailed introduction and documentation available on the package website: http://rundel.github.io/ghclass
+
+- The package is not on CRAN (but will be imminently), for now it can be installed from GitHub using:
 
 
 ```r
@@ -228,37 +248,38 @@ library(ghclass)
 
 ---
 
-## Collect data from students
+## 📦 design
 
-- You really only need GitHub usernames
-- Recommend also collecting emails though, as students might make a typo in their GitHub username
+Some design principals behind this package:
 
----
+1. All of the package's functions are prefixed with either `org`, `repo`, `team`, `github` or `local_repo` to indicate what they operate on.
 
-## Prior to collecting data...
+2. Most functions are vectorized over their parameters, allows related operations to be grouped.
 
-You need to instruct students to create GitHub accounts
+3. Most actions are non-destructive and/or backed by git, the handful of dangerous operations will warn you.
 
-- Consider data privacy rules of institution / country (e.g. you may need to enter a data protection agreement for GDPR compliance)
-- Give some guidance for selecting usernames (my favorite is on Happy Git with R: [happygitwithr.com/github-acct.html](https://happygitwithr.com/github-acct.html))
 
 ---
 
 ## Aside - GitHub tokens
 
-`ghclass` uses the GitHub API to interact with your course organization and repos - the API verifies your identity using a personal access token which must be created and saved in such a way that `ghclass` can find and use it.
+`ghclass` uses the GitHub API to interact with your organization and repos - the API verifies your identity using a personal access token which must be created and saved in such a way that `ghclass` can find and use it.
 
-- Create token at  [github.com/settings/tokens](https://github.com/settings/tokens) 
-- Once created, save token to `~/.github/token` or assign to the `GITHUB_TOKEN` as an environmentval variable
-  - `usethis::edit_r_environ()`
-  - `GITHUB_PAT="alphanumeric string of your GitHub token"`
+- Create a token at [github.com/settings/tokens](https://github.com/settings/tokens) 
+
+- Once created, assign it to the `GITHUB_TOKEN` as an environmental variable in R by,
+  
+  - Run `usethis::edit_r_environ()`
+  
+  - Add `GITHUB_PAT="alphanumeric string of your GitHub token"` to the opened `.Renviron` file.
+  
   - Save, close, restart R for changes to take effect
 
 ---
 
 ## Checking tokens
 
-- If the token is found and works correctly the following code should run without error
+If the token is found and works correctly the following code should run without error
 
 
 ```r
@@ -266,78 +287,108 @@ github_test_token()
 ```
 
 ```
-## ✓ Your github token is functioning correctly.
+## ✓ Your GitHub PAT authenticated correctly.
 ```
 
-- If instead the token is invalid or not found, you will see something like the following
-
+If instead the token is invalid or not found, you will see something like the following
 
 ```r
-github_test_token("MADE_UP_TOKEN")
+github_test_token("BAD_TOKEN")
 ```
 
----
-
-class: middle
-
-# Inviting students
+```
+## x Your GitHub PAT failed to authenticate.
+## └─GitHub API error (401): 401 Unauthorized
+##   ├─ API message: Bad credentials
+##   └─ API docs: https://developer.github.com/v3
+```
 
 ---
 
 ## Invite students
 
-- This will generate an email to students.
+- Collect student account names (and an email or other identifier)
+
+
+
+
+
+
+```r
+roster
+```
+
+```
+## # A tibble: 6 x 2
+##   email              github         
+##   &lt;chr&gt;              &lt;chr&gt;          
+## 1 anya@school.edu    ghclass-anya   
+## 2 bruno@school.edu   ghclass-bruno  
+## 3 celine@school.edu  ghclass-celine 
+## 4 diego@school.edu   ghclass-diego  
+## 5 elijah@school.edu  ghclass-elijah 
+## 6 francis@school.edu ghclass-francis
+```
+
+
+
+```r
+org_invite(org = "ghclass-demo", user = roster$github)
+```
+
+```
+## ✓ Invited user 'ghclass-anya' to org 'ghclass-demo'.
+```
+
+```
+## ✓ Invited user 'ghclass-bruno' to org 'ghclass-demo'.
+```
+
+```
+## ✓ Invited user 'ghclass-celine' to org 'ghclass-demo'.
+```
+
+```
+## ✓ Invited user 'ghclass-diego' to org 'ghclass-demo'.
+```
+
+```
+## ✓ Invited user 'ghclass-elijah' to org 'ghclass-demo'.
+```
+
+```
+## ✓ Invited user 'ghclass-francis' to org 'ghclass-demo'.
+```
+
 - Instruct students to check their email and follow the instructions.
 
-
-```r
-org &lt;- "design-ds-class"
-```
-
-
-```r
-roster &lt;- read_csv("SURVEY RESPONSES.csv")
-
-org_invite(org = org, user = roster$username)
-```
-
-```
-## ✔ Invited user 'minebotmine' to org 'design-ds-class'.
-## ✔ Invited user 'rundel' to org 'design-ds-class'.
-```
+- If you filled out the form earlier you may already have an invite to `ghclass-demo`.
 
 ---
 
 ## Check member status
 
-- Who is already in?
+Who is already in?
 
 
 ```r
-org_members(org)
+org_members(org = "ghclass-demo")
 ```
 
 ```
-##  [1] "aaron-gilbreath"       "bioboot"               "Cghlewis"             
-##  [4] "EricJC24"              "gabrielodom"           "Gavago"               
-##  [7] "gavinfay"              "geoffsaw"              "jetsetbaxter"         
-## [10] "KatherineCox"          "kavan-econ"            "matackett"            
-## [13] "Mears-UFL"             "melindahiggins2000"    "mine-cetinkaya-rundel"
-## [16] "murraycadzow"          "paideia-atl"           "paigerios68"          
-## [19] "srearl"                "staceyhancock"         "thereseanders"        
-## [22] "timothydobbins"        "VanjaRoz"              "woon-yuen"            
-## [25] "zamorarr"
+## [1] "mine-cetinkaya-rundel" "rundel"                "thereseanders"
 ```
 
-- Who still didn't accept their invitations?
+Who has not accepted their invitation?
 
 
 ```r
-org_pending(org)
+org_pending(org = "ghclass-demo")
 ```
 
 ```
-## character(0)
+## [1] "ghclass-anya"    "ghclass-bruno"   "ghclass-diego"   "ghclass-elijah" 
+## [5] "ghclass-francis" "ghclass-celine"
 ```
 
 ---
@@ -348,12 +399,17 @@ class: middle
 
 ---
 
-## Creating assignments - big picture
+## Starter repo
 
-- Create a starter repo, keep it private
-- Clone the repo and add any starter files (template Rmd, data, instructions, etc.)
-- Commit and push your changes to the repo
-- Use the `org_create_assignment()` function to create copies of the starter repo with correct permissions for each of your students (or teams)
+All assignments are just repositories on GitHub
+
+- each is made up of a collection of files necessary for that assignment (e.g. README, templated Rmd, Rproj file, etc.)
+
+- repos can be public or private and belong to any org
+
+- easy to recycle and update previous assignments
+
+&lt;img src="img/starter-repo.png" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -415,7 +471,7 @@ org_create_assignment(
 you have 2-factor authentication enabled on  
 GitHub (this complicates things!)
 
-<div class="countdown" id="timer_5f0f8a7b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f10c2bb" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -481,7 +537,7 @@ org_create_assignment(
 - Locate your Lab 03 and read through the Getting started section and follow the instructions with your team members.
 ]
 
-<div class="countdown" id="timer_5f0f879f" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f10c189" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -538,7 +594,7 @@ Check your email to confirm that you got notified of an issue being filed by you
 in your repo, and review the issue.
 ]
 
-<div class="countdown" id="timer_5f0f8959" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f10c4b1" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -557,6 +613,32 @@ in your repo, and review the issue.
 .hand-large[thank you!]
 
 All materials at [bit.ly/teach-r-online-mats](https://bit.ly/teach-r-online-mats)
+
+
+
+
+
+
+
+
+
+---
+
+## Collect data from students
+
+- You really only need GitHub usernames
+
+- Recommend also collecting emails though, as students might make a typo in their GitHub username
+
+---
+
+## Prior to collecting data...
+
+You need to instruct students to create GitHub accounts
+
+- Consider data privacy rules of institution / country (e.g. you may need to enter a data protection agreement for GDPR compliance)
+
+- Give some guidance for selecting usernames (my favorite is on Happy Git with R: [happygitwithr.com/github-acct.html](https://happygitwithr.com/github-acct.html))
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
