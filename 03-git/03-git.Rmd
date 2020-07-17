@@ -95,7 +95,7 @@ class: middle, inverse
 class: middle
 
 .center[
-<iframe width="900" height="500" src="https://www.youtube.com/embed/zaoSeyHARGM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="1000" height="600" src="https://www.youtube.com/embed/zaoSeyHARGM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ]
 
 ---
@@ -106,6 +106,18 @@ class: middle
 <iframe width="900" height="500" src="https://www.youtube-nocookie.com/embed/5wKdo2XJMeU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ]
 
+---
+
+## Aside - Git credentials
+
+Using *https* for authentication is highly recommended
+
+- Students will have to enter their username and password each time they *clone* or *push*
+
+- Credentials can be cached, see [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+- [Chapter 10](https://happygitwithr.com/credential-caching.html)
+
+- Alternatively, see the [credentials](https://github.com/r-lib/credentials) package and its [vignette](https://docs.ropensci.org/credentials/articles/intro.html). 
 
 ---
 
