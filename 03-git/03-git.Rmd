@@ -80,7 +80,9 @@ class: middle, inverse
 
 - Force students to use (learn) Git & GitHub
   - Version control is a best practice for reproducible research
+  
   - Widely used in industry 
+  
   - Publish / share work
 
 ---
@@ -110,14 +112,14 @@ class: middle
 
 ## Aside - Git credentials
 
-Using *https* for authentication is highly recommended
+Using *https* for authentication is highly recommended (vs *ssh*)
 
 - Students will have to enter their username and password each time they *clone* or *push*
 
-- Credentials can be cached, see [Happy Git and GitHub for the useR](https://happygitwithr.com/)
-- [Chapter 10](https://happygitwithr.com/credential-caching.html)
+- Credentials can be cached, see [Happy Git and GitHub for the useR
+- Chapter 10](https://happygitwithr.com/credential-caching.html)
 
-- Alternatively, see the [credentials](https://github.com/r-lib/credentials) package and its [vignette](https://docs.ropensci.org/credentials/articles/intro.html). 
+- Alternatively, see the [credentials](https://github.com/r-lib/credentials) package and its [vignette](https://docs.ropensci.org/credentials/articles/intro.html)
 
 ---
 
@@ -127,7 +129,7 @@ Using *https* for authentication is highly recommended
 .pull-left-wide[
 - Check your email and accept the invitation 
 
-- Obtain the *https* Git url from the GitHub repository
+- Obtain the *https* Git url from your GitHub repository
 
 - Open RStudio Cloud and start a new project with this url
 
@@ -164,13 +166,13 @@ class: middle, inverse
 
 On Github,
 
-- 1 Organization / class
+- 1 Organization / course or workshop
 
-- 1 repo / (student or team) / assignment
+- 1 repo / student or team / assignment
 
-- Student and team repos are all private by default
+- Student and team repositories are private by default
 
-- Students are added as members
+- Students are added to the organization as members
 
 - Tutors / TAs are added as owners (admins)
 
@@ -184,7 +186,7 @@ On Github,
 
 1. Create assignment(s)
 
-1. Collect and grade assignments(s) 
+1. Collection and feedback for assignments(s) 
 
 
 ---
@@ -268,7 +270,7 @@ class: middle, inverse
 
 ## `r emo::ji("parcel")` ghclass
 
-- Design to automate interactions with GitHub (via its API) for class management
+- Designed to automate interactions with GitHub (via its API) for class management
 
 - The package is ~4 years old and still under active development
 
@@ -291,7 +293,7 @@ Some design principals behind the package:
 
 2. Most functions are vectorized over their parameters, allowing related operations to be grouped
 
-3. Most actions are non-destructive or backed by Git, the handful of dangerous operations will warn you
+3. Most actions are non-destructive and or backed by Git, the handful of dangerous operations will warn you
 
 
 ---
@@ -309,6 +311,8 @@ Some design principals behind the package:
   - Add `GITHUB_PAT="alphanumeric string of your GitHub token"` to the opened `.Renviron` file.
   
   - Save, close, restart R for changes to take effect
+
+- We add support for the credentials package approach in the next release
 
 ---
 
@@ -363,7 +367,7 @@ From GitHub's API docs,
 
 > To prevent abuse, an authenticated user is limited to 50 organization invitations per 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
 
-Applying the education discount to an org => paid plan
+Applying the education discount to an org => a free paid Team plan for that org
 
 
 ---
@@ -471,7 +475,7 @@ teams = c("team01", "team01", "team02", "team02")
 
 org_create_assignment(
   org = "ghclass-demo",
-* repo = paste0("hw01-", teams),
+  repo = paste0("hw01-", teams),
 * team = teams,
   user = students,
   source_repo = "rundel/hw1"
@@ -535,7 +539,7 @@ These changes are tracked by Git - to get them students will need to pull.
 ---
 class: middle
 
-# Collecting and Grading
+# Collecting and Feedback
 
 ---
 
@@ -580,7 +584,13 @@ org_repo_stats("ghclass-demo")
 
 ---
 
-## Collecting
+class: middle
+
+# Collecting and Feedback
+
+---
+
+## Collecting work
 
 ```r
 local_repo_clone(
@@ -765,6 +775,11 @@ Example materials:
   
 - merge conflict activity - https://introds.org/labs/lab-04/lab-04-ugly-charts.html#merge-conflicts
 
+<!--
+More general discussion of using Git & GitHub in the classroom:
+
+- [Implementing version control with Git as a learning objective in statistics courses](https://arxiv.org/abs/2001.01988) - arXiv preprint
+-->
 
 ---
 
