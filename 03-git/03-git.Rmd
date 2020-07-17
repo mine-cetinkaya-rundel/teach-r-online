@@ -39,8 +39,6 @@ style_duo_accent(
 
 ## Activity 
 
-**to do: needs to be updated**
-
 .hand[while we wait to get started...]
 
 - Go to [bit.ly/gh-username](https://bit.ly/gh-username)
@@ -52,7 +50,7 @@ style_duo_accent(
 
 .large[
 - are familiar with R
-- are familiar with git and GitHub
+- are familiar with Git and GitHub
 - are interested in teaching version control
 - are interested in using GitHub as your learning management system
 - might be interested in automation tools offered by GitHub for auto feedback
@@ -74,13 +72,13 @@ class: middle, inverse
 
 ---
 
-## Goals for version control with Git / GitHub
+## Goals for version control with Git & GitHub
 
 - Centralize the distribution and collection of all student assignments
 
 - Enable students to work collaboratively
 
-- Force students to use (learn) git & GitHub
+- Force students to use (learn) Git & GitHub
   - Version control is a best practice for reproducible research
   - Widely used in industry 
   - Publish / share work
@@ -114,18 +112,27 @@ class: middle
 .your-turn[
 *We recommend one person in each group share their screen and everyone work together to work through the document.*
 
-- Accept the invitation, 
+.pull-left-wide[
+- Check your email and accept the invitation 
 
-- Obtain the *https* git url from the GitHub repository
+- Obtain the *https* Git url from the GitHub repository
 
 - Open RStudio Cloud and start a new project with this url
 
 - Work through Task 0 in the README
+]
 
-<br/>
-
+.pull-right-narrow[
+```{r echo=FALSE}
+knitr::include_graphics("img/git-url.jpeg")
+```
+]
+  
+  
 If you did not receive an invite you can make your own copy of the repo using the *Use this template* button here: https://github.com/rundel/hw1
 ]
+
+
 
 
 ```{r echo=FALSE}
@@ -272,7 +279,7 @@ Some design principals behind the package:
 
 2. Most functions are vectorized over their parameters, allowing related operations to be grouped
 
-3. Most actions are non-destructive or backed by git, the handful of dangerous operations will warn you
+3. Most actions are non-destructive or backed by Git, the handful of dangerous operations will warn you
 
 
 ---
@@ -343,6 +350,8 @@ org_invite(org = "ghclass-demo", user = students)
 From GitHub's API docs,
 
 > To prevent abuse, an authenticated user is limited to 50 organization invitations per 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
+
+Applying the education discount to an org => paid plan
 
 
 ---
@@ -450,7 +459,7 @@ teams = c("team01", "team01", "team02", "team02")
 
 org_create_assignment(
   org = "ghclass-demo",
-* repo = paste0("hw01-", {{teams}}),
+* repo = paste0("hw01-", teams),
 * team = teams,
   user = students,
   source_repo = "rundel/hw1"
@@ -507,6 +516,9 @@ repo_get_readme("ghclass-demo/hw01-team01", include_details = FALSE) %>%
 ## Due 2020/07/17 by 5:00 pm.
 ```
 
+These changes are tracked by Git - to get them students will need to pull. 
+
+
 
 ---
 class: middle
@@ -539,7 +551,7 @@ org_repos("ghclass-demo", filter = "hw01-team")
 
 
 ```r
-org_repo_stats("ghclass-demo", inc_prs)
+org_repo_stats("ghclass-demo")
 ```
 
 ```
@@ -559,7 +571,10 @@ org_repo_stats("ghclass-demo", inc_prs)
 ## Collecting
 
 ```r
-local_repo_clone(org_repos("ghclass-demo", filter = "hw01-team"), local_path = "hw1/")
+local_repo_clone(
+  repo = org_repos("ghclass-demo", filter = "hw01-team"), 
+  local_path = "hw1/"
+)
 ```
 
 ```
@@ -616,12 +631,16 @@ hw1/
 .your-turn[
 - Pick one person from the team to be the "instructor" and share their screen.
 
-- Go to https://github.com/ghclass-demo/hw01-everyone
+- Go to https://github.com/ghclass-demo/hw01-everyone (public repo)
 
 - Go to the issues tab, open a new issue, and provide mock feedback. Tag someone from your team by using the `@` sign in front of their GitHub.
 
 - Go to `hw1.Rmd`, pick a line of code, click on the `...` next to the numbers, click on *Reference in new issue*, and add a comment on the issue that links to this line of code.
 ]
+
+```{r echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/code-line.jpeg")
+```
 
 ```{r echo=FALSE}
 countdown(minutes = 10)
@@ -637,7 +656,7 @@ countdown(minutes = 10)
 
 - Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
 
-- Functionality for coordinating this has been implemented in ghclass, will be available in the next version.
+- Functionality for coordinating this has been implemented in ghclass, and will be available in the next release. Available in the `peer_review` branch for the adventurous.
 
 
 ---
@@ -683,13 +702,13 @@ class: middle, inverse
 
 ## Git + GitHub lessons learned
 
-- If you plan on using git in class, start on day one, don’t wait until the “right time”
+- If you plan on using Git in class, start on day one, don’t wait until the “right time”
 
 - First assignment should be individual, not team based to avoid merge conflicts
 
 - Remind students to remember to pull before starting work
 
-- Unlikely you will avoid the necessity of shell intervention at some point
+- You will likely need to do shell intervention at some point - make it a teachable momentc and remember, there  is a terminal pane in RStudio
 
 - Remind students on that future projects should go on GitHub with PI approval
 
@@ -714,20 +733,23 @@ class: middle, inverse
 
 This is education tool created by GitHub manage repository sharing and collection.
 
-- It is great and very usable and they continue to improve it.
+- It is great and very usable and they continue to improve it
 
-- ghclass and Classroom can work together, pick the workflow that is best for you.
+- ghclass and [GitHub Classroom](https://classroom.github.com/) work together, pick the workflow that is best for you
+
+- Different "membership" models
 
 ---
 
 .large[
-.hand[Q: How do you introduce git and GitHub to students?]
+.hand[Q: How do you introduce Git & GitHub to students?]
 ]
 
+Introduce it early and often, and make it required.
 
-Example materials for students,
+Example materials:
 
-- git and GitHub intro - https://introds.org/labs/lab-01/lab-01-hello-r
+- Git and GitHub intro - https://introds.org/labs/lab-01/lab-01-hello-r
   
 - merge conflict activity - https://introds.org/labs/lab-04/lab-04-ugly-charts.html#merge-conflicts
 
