@@ -21,10 +21,6 @@ output:
 ```{r child = "../setup.Rmd"}
 ```
 
-```{r}
-knitr::opts_chunk$set(cache = TRUE)
-```
-
 ```{r set-theme, include=FALSE}
 library(xaringanthemer)
 style_duo_accent(
@@ -35,24 +31,6 @@ style_duo_accent(
   code_font_google   = google_font("Source Code Pro"),
   text_font_size     = "30px"
 )
-```
-
-```{r load-packages, message=FALSE, echo=FALSE}
-library(tidyverse)
-library(ghclass)
-```
-
-```{r cleanup, include = FALSE}
-repo_delete(org_repos("ghclass-demo"), prompt = FALSE)
-team_delete("ghclass-demo", org_teams("ghclass-demo"), prompt = FALSE)
-org_remove("ghclass-demo", org_members("ghclass-demo", include_admins = FALSE), prompt = FALSE)
-org_remove("ghclass-demo", org_pending("ghclass-demo"), prompt = FALSE)
-```
-
-```{r student_pats, include = FALSE}
-enc = readRDS("~/Desktop/Projects/ghclass/credentials/example_users.enc.rds")
-key = sodium::sha256(charToRaw(Sys.getenv("GHCLASS_PAT")))
-pats = unserialize( sodium::data_decrypt(enc, key) )
 ```
 
 
@@ -198,7 +176,7 @@ On Github,
 https://github.com/organizations/new
 ]
 
-```{r echo=FALSE, fig.align="center", out.width="60%"}
+```{r echo=FALSE, fig.align="center", out.width="50%"}
 knitr::include_graphics("img/org-create.png")
 ```
 
@@ -319,8 +297,12 @@ Some design principals behind the package:
 
 If the token is found and works correctly the following code should run without error
 
-```{r}
+```r
 github_test_token()
+```
+
+```
+## ✓ Your GitHub PAT authenticated correctly.
 ```
 
 If instead the token is invalid or not found, you will see something like the following
@@ -342,13 +324,26 @@ github_test_token("BAD_TOKEN")
 
 - Collect student account names (and an email or other identifier)
 
-```{r}
+```r
 students = c("ghclass-anya", "ghclass-bruno", "ghclass-celine", "ghclass-diego")
-```
-
-```{r}
 org_invite(org = "ghclass-demo", user = students)
 ```
+
+```
+## ✓ Invited user 'ghclass-anya' to org 'ghclass-demo'.
+## ✓ Invited user 'ghclass-bruno' to org 'ghclass-demo'.
+## ✓ Invited user 'ghclass-celine' to org 'ghclass-demo'.
+## ✓ Invited user 'ghclass-diego' to org 'ghclass-demo'.
+```
+
+---
+
+## Rate limits
+
+From GitHub's API docs,
+
+> To prevent abuse, an authenticated user is limited to 50 organization invitations per 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
+
 
 ---
 
@@ -356,14 +351,24 @@ org_invite(org = "ghclass-demo", user = students)
 
 Who is already in?
 
-```{r}
+```r
 org_members(org = "ghclass-demo")
 ```
 
+```
+## [1] "mine-cetinkaya-rundel" "rundel" "thereseanders"
+```
+
+<br/>
+
 Who has not accepted their invitation?
 
-```{r}
+```r
 org_pending(org = "ghclass-demo")
+```
+
+```
+## [1] "ghclass-anya"   "ghclass-bruno"  "ghclass-diego"  "ghclass-celine"
 ```
 
 ---
@@ -390,13 +395,24 @@ knitr::include_graphics("img/starter-repo.png")
 
 ## Template Repos
 
-```{r echo=FALSE, fig.align="center", out.width="80%"}
+```{r echo=FALSE, fig.align="center", out.width="70%"}
 knitr::include_graphics("img/template-repo.png")
 ```
 
-```{r}
+```r
 repo_set_template("rundel/hw1")
+```
+
+```
+## ✓ Changed the template status of repo 'rundel/hw1' to TRUE.
+```
+
+```r
 repo_is_template("rundel/hw1")
+```
+
+```
+TRUE
 ```
 
 
@@ -404,7 +420,7 @@ repo_is_template("rundel/hw1")
 
 ## Create assignments
 
-```{r}
+```r
 org_create_assignment(
   org = "ghclass-demo",
   repo = paste0("hw01-", students),
@@ -413,30 +429,52 @@ org_create_assignment(
 )
 ```
 
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-anya'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-celine'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-diego'.
+## ✓ Added user 'ghclass-anya' to repo 'ghclass-demo/hw01-ghclass-anya'.
+## ✓ Added user 'ghclass-bruno' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+## ✓ Added user 'ghclass-celine' to repo 'ghclass-demo/hw01-ghclass-celine'.
+## ✓ Added user 'ghclass-diego' to repo 'ghclass-demo/hw01-ghclass-diego'.
+```
+
 ---
 
 ## Create team assignments
 
-```{r}
+```r
 students = c("ghclass-anya", "ghclass-bruno", "ghclass-celine", "ghclass-diego")
 teams = c("team01", "team01", "team02", "team02")
 
 org_create_assignment(
   org = "ghclass-demo",
-  repo = paste0("hw01-", teams),
-  team = teams,
+* repo = paste0("hw01-", {{teams}}),
+* team = teams,
   user = students,
   source_repo = "rundel/hw1"
 )
+```
+
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-anya'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-celine'.
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-diego'.
+## ✓ Added user 'ghclass-anya' to repo 'ghclass-demo/hw01-ghclass-anya'.
+## ✓ Added user 'ghclass-bruno' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+## ✓ Added user 'ghclass-celine' to repo 'ghclass-demo/hw01-ghclass-celine'.
+## ✓ Added user 'ghclass-diego' to repo 'ghclass-demo/hw01-ghclass-diego'.
 ```
 
 ---
 
 ## Fixing mistakes
 
-```{r}
+```r
 repo_modify_file(
-  repo = org_repos("ghclass-demo", "hw01-"),
+  repo = org_repos("ghclass-demo", filter = "hw01-"),
   path = "README.md",
   pattern = "Due 20/00/00 by 5:00 pm",
   content = "Due 2020/07/17 by 5:00 pm",
@@ -444,12 +482,29 @@ repo_modify_file(
 )
 ```
 
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-anya/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-bruno/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-celine/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-diego/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-team01/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-team02/README.md'.
+```
+
 ---
 
-```{r}
+```r
 repo_get_readme("ghclass-demo/hw01-team01", include_details = FALSE) %>% 
   substr(1, 80) %>%
   cat()
+```
+
+```
+## 
+## Statistical Programming - Homework 1
+## -------------
+## 
+## Due 2020/07/17 by 5:00 pm.
 ```
 
 
@@ -462,43 +517,81 @@ class: middle
 
 ## Repo details
 
-```{r}
+```r
 org_repos("ghclass-demo")
 ```
 
-```{r message=FALSE, warning=FALSE}
-org_repo_stats("ghclass-demo")
+```
+## [1] "ghclass-demo/hw01-ghclass-anya"   "ghclass-demo/hw01-ghclass-bruno" 
+## [3] "ghclass-demo/hw01-ghclass-celine" "ghclass-demo/hw01-ghclass-diego" 
+## [5] "ghclass-demo/hw01-team01"         "ghclass-demo/hw01-team02" 
+```
+
+```r
+org_repos("ghclass-demo", filter = "hw01-team")
+```
+
+```
+## [1] "ghclass-demo/hw01-team01" "ghclass-demo/hw01-team02"
 ```
 
 ---
 
-```{r}
-repo_commits("tidyverse/dplyr") %>%
-  count(login, sort = TRUE)
+
+```r
+org_repo_stats("ghclass-demo", inc_prs)
+```
+
+```
+## # A tibble: 6 x 6
+##   repo                             private commits last_update         open_issues closed_issues
+##   <chr>                            <lgl>     <int> <dttm>                    <int>         <int>
+## 1 ghclass-demo/hw01-team02         TRUE          2 2020-07-17 08:42:50           0             0
+## 2 ghclass-demo/hw01-team01         TRUE          2 2020-07-17 08:42:48           0             0
+## 3 ghclass-demo/hw01-ghclass-diego  TRUE          2 2020-07-17 08:42:47           0             0
+## 4 ghclass-demo/hw01-ghclass-anya   TRUE          2 2020-07-17 08:42:41           0             0
+## 5 ghclass-demo/hw01-ghclass-bruno  TRUE          2 2020-07-17 08:42:43           0             0
+## 6 ghclass-demo/hw01-ghclass-celine TRUE          2 2020-07-17 08:42:45           0             0
 ```
 
 ---
 
 ## Collecting
 
-```{r}
+```r
 local_repo_clone(org_repos("ghclass-demo", filter = "hw01-team"), local_path = "hw1/")
 ```
 
-```{r}
+```
+✓ Cloned 'ghclass-demo/hw01-team01'.
+✓ Cloned 'ghclass-demo/hw01-team02'.
+```
+
+--
+
+```r
 fs::dir_tree("hw1/", recurse = TRUE)
 ```
 
-```{r include=FALSE}
-unlink("hw1/", recursive = TRUE)
 ```
+hw1/
+├── hw01-team01
+│   ├── README.md
+│   ├── hw1.Rmd
+│   └── hw1.Rproj
+└── hw01-team02
+    ├── README.md
+    ├── hw1.Rmd
+    └── hw1.Rproj
+```
+
 
 
 ---
 
 ## Options for giving feedback on GitHub
 
-- Use the GitHub UI to add issues to each student's repo
+- Use the GitHub UI to review and add issues to each repo
 
 - Use the `issue_create()` function to post issues to all repos at once
 
@@ -520,19 +613,6 @@ unlink("hw1/", recursive = TRUE)
 
 ---
 
-## Peer review
-
-- Once an assignment is completed you can let other students/teams into a repository and they can provide peer review.
-
-- Peer review is an incredibly effective learning experience for both the reviewers and the reviewees, however it does require coordination and being able to carve out sufficient time in the course schedule.
-
-- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
-
-- Functionality for coordinating this has been implemented in ghclass, will be available in the next version.
-
-
----
-
 .your-turn[
 - Pick one person from the team to be the "instructor" and share their screen.
 
@@ -549,14 +629,48 @@ countdown(minutes = 10)
 
 ---
 
+## Peer review
+
+- Once an assignment is completed you can let other students/teams into a repository and they can provide peer review.
+
+- Peer review is an incredibly effective learning experience for both the reviewers and the reviewees, however it does require coordination and being able to carve out sufficient time in the course schedule.
+
+- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
+
+- Functionality for coordinating this has been implemented in ghclass, will be available in the next version.
+
+
+---
+
 ## Automated feedback
 
-```{r}
+```r
 action_workflows("ghclass-demo/hw01-team01")
+```
+
+```
+## # A tibble: 1 x 4
+##   name       path                      state  badge_url
+##   <chr>      <chr>                     <chr>  <chr>
+## 1 check_knit .github/workflows/knit.y… active https://github.com/ghclass-demo/hw01-team01/…
+```
+
+
+```r
 action_add_badge(
   repo = org_repos("ghclass-demo", "hw01-")
 )
 ```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-anya/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-bruno/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-celine/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-diego/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-team01/README.md'.
+## ✓ Modified file 'ghclass-demo/hw01-team02/README.md'.
+```
+
 
 ---
 
@@ -609,7 +723,6 @@ This is education tool created by GitHub manage repository sharing and collectio
 .large[
 .hand[Q: How do you introduce git and GitHub to students?]
 ]
-
 
 
 Example materials for students,
