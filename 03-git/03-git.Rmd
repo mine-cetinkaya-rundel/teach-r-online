@@ -713,6 +713,8 @@ action_add_badge(
 ```
 
 
+See [rundel/ghclass-actions](https://github.com/rundel/ghclass-actions) for more workflows
+
 ---
 
 class: middle, inverse
