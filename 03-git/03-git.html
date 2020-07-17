@@ -37,11 +37,12 @@ layout: true
 ---
 
 
-
-
 ```r
-library(ghclass)
+knitr::opts_chunk$set(cache = TRUE)
 ```
+
+
+
 
 
 
@@ -58,10 +59,8 @@ library(ghclass)
 
 .hand[while we wait to get started...]
 
-- Go to [gallery.shinyapps.io/lego-sales](https://gallery.shinyapps.io/lego-sales/)
-- Start working through the tutorial
-- Feel free to make mistakes and test out the feedback
-- If you get to the very end, follow the instructions (but if they seem a bit opaque, don't fret, we'll say more about "submission" later...)
+- Go to [bit.ly/gh-username](https://bit.ly/gh-username)
+- Enter your GitHub username
 
 ---
 
@@ -91,18 +90,6 @@ class: middle, inverse
 
 ---
 
-- **Version control:** mistakes are inevitable, need ability to revert
-
-- **Collaboration:** Platform that removes barriers to well documented collaboration
-
-- **Accountability:** Transparent commit history
-
-- **Early introduction:** 
-  - Mastery takes time, earlier the better
-  - Portfolios &amp; Marketability
-
----
-
 ## Goals for version control with Git / GitHub
 
 - Centralize the distribution and collection of all student assignments
@@ -113,19 +100,66 @@ class: middle, inverse
   - Version control is a best practice for reproducible research
   - Widely used in industry 
   - Publish / share work
-  
+
 ---
 
 class: middle, inverse
 
 .huge-text[github]  
-.larger[as your LMS]
+.larger[as a student]
+
+
+---
+class: middle
+
+.center[
+&lt;iframe width="900" height="500" src="https://www.youtube.com/embed/zaoSeyHARGM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+---
+
+class: middle
+
+.center[
+&lt;iframe width="900" height="500" src="https://www.youtube-nocookie.com/embed/5wKdo2XJMeU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+
+---
+
+.your-turn[
+*We recommend one person in each group share their screen and everyone work together to work through the document.*
+
+- Accept the invitation, 
+
+- Obtain the *https* git url from the GitHub repository
+
+- Open RStudio Cloud and start a new project with this url
+
+- Work through Task 0 in the README
+
+&lt;br/&gt;
+
+If you did not receive an invite you can make your own copy of the repo using the *Use this template* button here: https://github.com/rundel/hw1
+]
+
+
+<div class="countdown" id="timer_5f10ea1c" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+class: middle, inverse
+
+.huge-text[github]  
+.larger[as an instructor]
 
 ---
 
 ## Basic Structure
 
-On Github
+On Github,
 
 - 1 Organization / class
 
@@ -133,9 +167,9 @@ On Github
 
 - Student and team repos are all private by default
 
-- Students are added to org as members (membership is not public by default)
+- Students are added as members
 
-- Tutors / TAs are added to org as admins / owners
+- Tutors / TAs are added as owners (admins)
 
 ---
 
@@ -147,7 +181,7 @@ On Github
 
 1. Create assignment(s)
 
-1. Collect and or grade assignments(s) 
+1. Collect and grade assignments(s) 
 
 
 ---
@@ -211,13 +245,6 @@ class: middle
 
 .hand[ at this scale, doing anything with the GitHub UI starts to get quite tedious... ]
 
-
-
-
----
-
-
-
 ---
 
 class: middle, inverse
@@ -239,10 +266,6 @@ class: middle, inverse
 
 ```r
 devtools::install_github("rundel/ghclass")
-```
-
-
-```r
 library(ghclass)
 ```
 
@@ -250,13 +273,13 @@ library(ghclass)
 
 ## 📦 design
 
-Some design principals behind this package:
+Some design principals behind the package:
 
-1. All of the package's functions are prefixed with either `org`, `repo`, `team`, `github` or `local_repo` to indicate what they operate on.
+1. All functions are prefixed to indicate what they operate on (e.g.  `org`, `repo`, `team`, `local_repo`, etc.)
 
-2. Most functions are vectorized over their parameters, allows related operations to be grouped.
+2. Most functions are vectorized over their parameters, allowing related operations to be grouped
 
-3. Most actions are non-destructive and/or backed by git, the handful of dangerous operations will warn you.
+3. Most actions are non-destructive or backed by git, the handful of dangerous operations will warn you
 
 
 ---
@@ -310,30 +333,13 @@ github_test_token("BAD_TOKEN")
 - Collect student account names (and an email or other identifier)
 
 
-
-
+```r
+students = c("ghclass-anya", "ghclass-bruno", "ghclass-celine", "ghclass-diego")
+```
 
 
 ```r
-roster
-```
-
-```
-## # A tibble: 6 x 2
-##   email              github         
-##   &lt;chr&gt;              &lt;chr&gt;          
-## 1 anya@school.edu    ghclass-anya   
-## 2 bruno@school.edu   ghclass-bruno  
-## 3 celine@school.edu  ghclass-celine 
-## 4 diego@school.edu   ghclass-diego  
-## 5 elijah@school.edu  ghclass-elijah 
-## 6 francis@school.edu ghclass-francis
-```
-
-
-
-```r
-org_invite(org = "ghclass-demo", user = roster$github)
+org_invite(org = "ghclass-demo", user = students)
 ```
 
 ```
@@ -351,18 +357,6 @@ org_invite(org = "ghclass-demo", user = roster$github)
 ```
 ## ✓ Invited user 'ghclass-diego' to org 'ghclass-demo'.
 ```
-
-```
-## ✓ Invited user 'ghclass-elijah' to org 'ghclass-demo'.
-```
-
-```
-## ✓ Invited user 'ghclass-francis' to org 'ghclass-demo'.
-```
-
-- Instruct students to check their email and follow the instructions.
-
-- If you filled out the form earlier you may already have an invite to `ghclass-demo`.
 
 ---
 
@@ -387,8 +381,7 @@ org_pending(org = "ghclass-demo")
 ```
 
 ```
-## [1] "ghclass-anya"    "ghclass-bruno"   "ghclass-diego"   "ghclass-elijah" 
-## [5] "ghclass-francis" "ghclass-celine"
+## [1] "ghclass-anya"   "ghclass-bruno"  "ghclass-diego"  "ghclass-celine"
 ```
 
 ---
@@ -407,37 +400,31 @@ All assignments are just repositories on GitHub
 
 - repos can be public or private and belong to any org
 
-- easy to recycle and update previous assignments
-
 &lt;img src="img/starter-repo.png" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-## Creating your starter repo
+## Template Repos
 
-&lt;br&gt;
+&lt;img src="img/template-repo.png" width="80%" style="display: block; margin: auto;" /&gt;
 
-&lt;img src="img/starter-repo-create.png" width="474" /&gt;
 
----
+```r
+repo_set_template("rundel/hw1")
+```
 
-## Make your starter repo a template
+```
+## ✓ Changed the template status of repo 'rundel/hw1' to TRUE.
+```
 
-&lt;br&gt;
+```r
+repo_is_template("rundel/hw1")
+```
 
-&lt;img src="img/starter-repo-make-template.png" width="653" /&gt;
+```
+## [1] TRUE
+```
 
----
-
-## Prepare your starter repo
-
-- Clone it locally
-- Add any necessary files
-- Commit and push
-
-&lt;br&gt;
-
-[DEMO]
 
 ---
 
@@ -446,34 +433,264 @@ All assignments are just repositories on GitHub
 
 ```r
 org_create_assignment(
-  org = org,
-  repo = paste0("hw-01-airbnb-edi-", roster$username),
-  user = roster$username,
-  source_repo = paste0(org, "/hw-01-airbnb-edi")
+  org = "ghclass-demo",
+  repo = paste0("hw01-", students),
+  user = students,
+  source_repo = "rundel/hw1"
 )
 ```
 
-&lt;br&gt;
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-anya'.
+```
 
-[DEMO]
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+```
+
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-celine'.
+```
+
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-ghclass-diego'.
+```
+
+```
+## ✓ Added user 'ghclass-anya' to repo 'ghclass-demo/hw01-ghclass-anya'.
+```
+
+```
+## ✓ Added user 'ghclass-bruno' to repo 'ghclass-demo/hw01-ghclass-bruno'.
+```
+
+```
+## ✓ Added user 'ghclass-celine' to repo 'ghclass-demo/hw01-ghclass-celine'.
+```
+
+```
+## ✓ Added user 'ghclass-diego' to repo 'ghclass-demo/hw01-ghclass-diego'.
+```
 
 ---
 
-.your-turn[
-- Go to the course organisation on GitHub: [github.com/design-ds-class](https://github.com/design-ds-class)
-- Locate your HW 01 and read through the Getting started section and follow the instructions.
-- Then, go through the Hello Git and Warm up sections as well.
-- Finally, add your answer to Question 1, and commit and push again.
-]
+## Create team assignments
 
-- If there is no GitHub repo created for you for this assignment, let me know.
-- Clone using the HTTPS link, and let me know if   
-you have 2-factor authentication enabled on  
-GitHub (this complicates things!)
 
-<div class="countdown" id="timer_5f10c2bb" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
+```r
+students = c("ghclass-anya", "ghclass-bruno", "ghclass-celine", "ghclass-diego")
+teams = c("hw01-team01", "hw01-team01", "hw01-team02", "hw01-team02")
+
+org_create_assignment(
+  org = "ghclass-demo",
+  repo = teams,
+  team = teams,
+  user = students,
+  source_repo = "rundel/hw1"
+)
+```
+
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-team01'.
+```
+
+```
+## ✓ Mirrored repo 'rundel/hw1' to repo 'ghclass-demo/hw01-team02'.
+```
+
+```
+## ✓ Created team 'hw01-team01' in org 'ghclass-demo'.
+```
+
+```
+## ✓ Created team 'hw01-team02' in org 'ghclass-demo'.
+```
+
+```
+## ✓ Added user 'ghclass-anya' to team 'hw01-team01'.
+```
+
+```
+## ✓ Added user 'ghclass-bruno' to team 'hw01-team01'.
+```
+
+```
+## ✓ Added user 'ghclass-celine' to team 'hw01-team02'.
+```
+
+```
+## ✓ Added user 'ghclass-diego' to team 'hw01-team02'.
+```
+
+```
+## ✓ Added team 'hw01-team01' to repo 'ghclass-demo/hw01-team01' with 'push' access.
+```
+
+```
+## ✓ Added team 'hw01-team02' to repo 'ghclass-demo/hw01-team02' with 'push' access.
+```
+
+---
+
+## Fixing mistakes
+
+
+```r
+repo_modify_file(
+  repo = org_repos("ghclass-demo", "hw01-"),
+  path = "README.md",
+  pattern = "Due 20/00/00 by 5:00 pm",
+  content = "Due 2020/07/17 by 5:00 pm",
+  method = "replace"
+)
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-anya/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-bruno/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-celine/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-diego/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-team01/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-team02/README.md'.
+```
+
+---
+
+
+```r
+repo_get_readme("ghclass-demo/hw01-team01", include_details = FALSE) %&gt;% 
+  substr(1, 80) %&gt;%
+  cat()
+```
+
+```
+## 
+## Statistical Programming - Homework 1
+## -------------
+## 
+## Due 2020/07/17 by 5:00 pm.
+```
+
+
+---
+class: middle
+
+# Collecting and Grading
+
+---
+
+## Repo details
+
+
+```r
+org_repos("ghclass-demo")
+```
+
+```
+## [1] "ghclass-demo/hw01-ghclass-anya"   "ghclass-demo/hw01-ghclass-bruno" 
+## [3] "ghclass-demo/hw01-ghclass-celine" "ghclass-demo/hw01-ghclass-diego" 
+## [5] "ghclass-demo/hw01-team01"         "ghclass-demo/hw01-team02"
+```
+
+
+```r
+org_repo_stats("ghclass-demo")
+```
+
+```
+## Warning: This function ('org_repo_stats') is currently considered experimental.
+## Its interface, implementation, and other features may change significantly in
+## future versions of the package. Use with caution.
+```
+
+```
+## # A tibble: 6 x 9
+##   repo  private commits last_update         open_issues closed_issues open_prs
+##   &lt;chr&gt; &lt;lgl&gt;     &lt;int&gt; &lt;dttm&gt;                    &lt;int&gt;         &lt;int&gt;    &lt;int&gt;
+## 1 ghcl… TRUE          2 2020-07-16 23:52:45           0             0        0
+## 2 ghcl… TRUE          2 2020-07-16 23:52:43           0             0        0
+## 3 ghcl… TRUE          2 2020-07-16 23:52:41           0             0        0
+## 4 ghcl… TRUE          2 2020-07-16 23:52:40           0             0        0
+## 5 ghcl… TRUE          2 2020-07-16 23:52:35           0             0        0
+## 6 ghcl… TRUE          2 2020-07-16 23:52:46           0             0        0
+## # … with 2 more variables: merged_prs &lt;int&gt;, closed_prs &lt;int&gt;
+```
+
+---
+
+
+```r
+repo_commits("tidyverse/dplyr") %&gt;%
+  count(login, sort = TRUE)
+```
+
+```
+## # A tibble: 80 x 2
+##    login                     n
+##    &lt;chr&gt;                 &lt;int&gt;
+##  1 romainfrancois          550
+##  2 hadley                  237
+##  3 lionel-                  44
+##  4 DavisVaughan             41
+##  5 krlmlr                   21
+##  6 mine-cetinkaya-rundel    11
+##  7 yutannihilation           6
+##  8 batpigandme               5
+##  9 earowang                  5
+## 10 ianmcook                  3
+## # … with 70 more rows
+```
+
+---
+
+## Collecting
+
+
+```r
+local_repo_clone(org_repos("ghclass-demo", filter = "hw01-team"), local_path = "hw1/")
+```
+
+```
+## ✓ Cloned 'ghclass-demo/hw01-team01'.
+```
+
+```
+## ✓ Cloned 'ghclass-demo/hw01-team02'.
+```
+
+
+```r
+fs::dir_tree("hw1/", recurse = TRUE)
+```
+
+```
+## hw1/
+## ├── hw01-team01
+## │   ├── README.md
+## │   ├── hw1.Rmd
+## │   └── hw1.Rproj
+## └── hw01-team02
+##     ├── README.md
+##     ├── hw1.Rmd
+##     └── hw1.Rproj
+```
+
+
 
 
 ---
@@ -482,79 +699,23 @@ GitHub (this complicates things!)
 
 - Use the GitHub UI to add issues to each student's repo
 
-- Clone student repos locally and reproduce their work prior to giving feedback by adding issues on the GitHub UI
-
-
-```r
-hw01_repos &lt;- org_repos(org, "hw-01-airbnb-edi-")
-local_repo_clone(hw01_repos, 
-                 local_path = "hw01_submissions")
-```
-
 - Use the `issue_create()` function to post issues to all repos at once
-  - Add a column for the repo name in `org/repo` format to roster
-  - Add a column for feedback
-  - [DEMO]
-             
----
 
-## Get big picture stats for an assignment
+- Create pull requests with explicit revisions to student code 
 
-
-```r
-org_repo_stats(org, filter = "hw-01-airbnb-edi-")
-```
-
-&lt;br&gt;
-
-[DEMO]
-
----
-
-## Create team assignments
-
-First, we'll make up some teams
-
-
-```r
-org_create_assignment(
-  org = org,
-  repo = paste0("lab-03-nobel-laureates-", roster$team_name),
-  user = roster$github_name,
-  team = roster$team_name,
-  source_repo = paste0(org, "/lab-03-nobel-laureates")
-)
-```
-
-&lt;br&gt;
-
-[DEMO]
-
----
-
-.your-turn[
-- Go to the course organisation on GitHub: [github.com/design-ds-class](https://github.com/design-ds-class)
-- Locate your Lab 03 and read through the Getting started section and follow the instructions with your team members.
-]
-
-<div class="countdown" id="timer_5f10c189" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
----
-
-class: middle, inverse
-
-# Giving feedback
+- Clone repos locally and add feedback in a file, push back to GitHub
 
 ---
 
 ## More on giving feedback in issues
 
 - Instructors (and TAs) can view all repositories within the course organization.
-- Use specific line references. [DEMO]
-- Make sure to `@` mention the student so that they are notified when an issue is opened.
-- You might want to consider keeping points out of issues.
+
+- Builtin tools for referencing specific commits, lines of code, etc.
+
+- `@` mention students so that they are notified when an issue is opened.
+
+- You may want to consider keeping grades / marks out of issues.
 
 ---
 
@@ -564,49 +725,123 @@ class: middle, inverse
 
 - Peer review is an incredibly effective learning experience for both the reviewers and the reviewees, however it does require coordination and being able to carve out sufficient time in the course schedule.
 
-- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
+- Tip: Do not solely count on peer review for feedback as some reviewers might be less diligent than others. Teams reviewing teams, as opposed to individual reviewing individuals, might address this issue partially.
 
-See the [Peer review with ghclass vignette](https://rundel.github.io/ghclass/articles/peer.html) for more.
+- Functionality for coordinating this has been implemented in ghclass, will be available in the next version.
 
----
-
-## Pull requests
-
-- Another option is to open pull requests for your students' work where you directly edit their work and ask them to approve the edits.
-
-- This can be effective as students will see your corrections and review them before accepting them.
-
-- However this also does mean that you're directly correcting their work as opposed to giving them higher level instructions on how to correct it.
-
-More on this in the next module...
 
 ---
 
 .your-turn[
-**Now you're the instructor:**
-
-- First, I'll change everyone's permission level and make you *Owner*s. (Please don't delete any repos!)
-- Go to the GitHub organization for our "class" and observe that now you can see all repos.
-- Go into the individual repo (HW 01) for your neighbor. Open an issue and add some text to the issue. In the issue `@` mention their username. Submit your issue.
-
-**Now you're a student:**
-Check your email to confirm that you got notified of an issue being filed by your neighbor  
-in your repo, and review the issue.
+- Pick one person from the team to be the "instructor" and share their screen.
+- Go to https://github.com/ghclass-demo/hw01-everyone
+- Go to the issues tab, open a new issue, and provide mock feedback. Tag someone from your team by using the @ sign in front of their GitHub.
+- Go to `hw1.Rmd`, pick a line of code, click on the `...` next to the numbers, click on *Reference in new issue*, and add a comment on the issue that links to this line of code.
 ]
 
-<div class="countdown" id="timer_5f10c4b1" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_5f10e949" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+---
+
+## Automated feedback
+
+
+```r
+action_workflows("ghclass-demo/hw01-team01")
+```
+
+```
+## # A tibble: 1 x 4
+##   name          path             state badge_url                                
+##   &lt;chr&gt;         &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                                    
+## 1 Check Reprod… .github/workflo… acti… https://github.com/ghclass-demo/hw01-tea…
+```
+
+```r
+action_add_badge(
+  repo = org_repos("ghclass-demo", "hw01-")
+)
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-anya/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-bruno/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-celine/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-ghclass-diego/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-team01/README.md'.
+```
+
+```
+## ✓ Modified file 'ghclass-demo/hw01-team02/README.md'.
+```
+
+---
+
+class: middle, inverse
+
+.huge-text[closing]
+.huge-text[thoughts]
 
 ---
 
 ## Git + GitHub lessons learned
 
 - If you plan on using git in class, start on day one, don’t wait until the “right time”
+
 - First assignment should be individual, not team based to avoid merge conflicts
-- Students need to remember to pull before starting work
-- Impossible (?) to avoid shell intervention every once in a while
+
+- Remind students to remember to pull before starting work
+
+- Unlikely you will avoid the necessity of shell intervention at some point
+
 - Remind students on that future projects should go on GitHub with PI approval
+
+---
+
+.large[
+.hand[Q: What about data protection regulations (FURPA, GDPR)?]
+]
+
+- Consider data privacy rules of institution / country (e.g. you may need to enter a data protection agreement for GDPR compliance)
+
+- Make everything private by default (ghclass opts for this)
+  - Private repos
+  - Hidden team and org memberships
+  - Disallow forking of private repos
+  
+---
+
+.large[
+.hand[Q: What about GitHub Classroom?]
+]
+
+This is education tool created by GitHub manage repository sharing and collection.
+
+- It is great and very usable and they continue to improve it.
+
+- ghclass and Classroom can work together, pick the workflow that is best for you.
+
+---
+
+.large[
+.hand[Q: How do you introduce git and GitHub to students?]
+]
+
+- From week 1,
 
 ---
 
@@ -619,26 +854,6 @@ All materials at [bit.ly/teach-r-online-mats](https://bit.ly/teach-r-online-mats
 
 
 
-
-
-
----
-
-## Collect data from students
-
-- You really only need GitHub usernames
-
-- Recommend also collecting emails though, as students might make a typo in their GitHub username
-
----
-
-## Prior to collecting data...
-
-You need to instruct students to create GitHub accounts
-
-- Consider data privacy rules of institution / country (e.g. you may need to enter a data protection agreement for GDPR compliance)
-
-- Give some guidance for selecting usernames (my favorite is on Happy Git with R: [happygitwithr.com/github-acct.html](https://happygitwithr.com/github-acct.html))
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
