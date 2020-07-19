@@ -110,19 +110,6 @@ class: middle
 
 ---
 
-## Aside - Git credentials
-
-Using *https* for authentication is highly recommended (vs *ssh*)
-
-- Students will have to enter their username and password each time they *clone* or *push*
-
-- Credentials can be cached, see [Happy Git and GitHub for the useR
-- Chapter 10](https://happygitwithr.com/credential-caching.html)
-
-- Alternatively, see the [credentials](https://github.com/r-lib/credentials) package and its [vignette](https://docs.ropensci.org/credentials/articles/intro.html)
-
----
-
 .your-turn[
 *We recommend one person in each group share their screen and everyone work together to work through the document.*
 
@@ -152,6 +139,19 @@ If you did not receive an invite you can make your own copy of the repo using th
 ```{r echo=FALSE}
 countdown(minutes = 15)
 ```
+
+---
+
+## Aside - Git credentials
+
+Using *https* for authentication is highly recommended (vs *ssh*)
+
+- Students will have to enter their username and password each time they *clone* or *push*
+
+- Credentials can be cached, see [Happy Git and GitHub for the useR - Chapter 10](https://happygitwithr.com/credential-caching.html)
+
+- Alternatively, see the [credentials](https://github.com/r-lib/credentials) package and its [vignette](https://docs.ropensci.org/credentials/articles/intro.html)
+
 
 ---
 
@@ -712,6 +712,8 @@ action_add_badge(
 ## ✓ Modified file 'ghclass-demo/hw01-team02/README.md'.
 ```
 
+
+See [rundel/ghclass-actions](https://github.com/rundel/ghclass-actions) for more workflows
 
 ---
 
