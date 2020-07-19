@@ -13,7 +13,7 @@ The workshops are hosted by the Centre for Statistics at the University of Edinb
 
 ### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.pdf)
 
-### [Video](https://media.ed.ac.uk/media/t/1_bz9yza6s)
+### [Video](https://media.ed.ac.uk/playlist/dedicated/169801461/1_gjzcgkec/1_bz9yza6s)
 
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/01-cloud/01-cloud.html#2) while we wait to get started...
 
@@ -29,6 +29,8 @@ RStudio Cloud is a lightweight and easy to set up / use solution to teaching R o
 
 ### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.pdf)
 
+### [Video](https://media.ed.ac.uk/playlist/dedicated/169801461/1_gjzcgkec/1_dnk4rx3t)
+
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/02-tutorial/02-tutorial.html#2) while we wait to get started...
 
 The learnr R package provides a new multimedia approach for teaching statistics and programming with R. Building on R Markdown, this package allows teachers to create interactive tutorials containing narrative, figures, illustrations, and equations, code exercises (R code chunks that users can edit and execute directly), multiple choice quiz questions, videos, and interactive Shiny components. Tutorials built with this tool can be used for checking and reinforcing students' understanding and have the benefit of being self-paced and provide instant feedback. We will demonstrate how to use the learnr package to build interactive R tutorials and discuss best practices for using them.  
@@ -42,6 +44,8 @@ The learnr R package provides a new multimedia approach for teaching statistics 
 #### Friday July 17th, 2 - 3:30pm
 
 ### Slides - [html](https://mine-cetinkaya-rundel.github.io/teach-r-online/03-git/03-git.html#1)  / [pdf](https://mine-cetinkaya-rundel.github.io/teach-r-online/03-git/03-git.pdf)
+
+### [Video](https://media.ed.ac.uk/playlist/dedicated/169801461/1_gjzcgkec/1_6a4v2hwq)
 
 ### [Activity](https://mine-cetinkaya-rundel.github.io/teach-r-online/03-git/03-git.html#2) while we wait to get started...
 
