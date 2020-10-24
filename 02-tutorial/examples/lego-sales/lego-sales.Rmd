@@ -19,6 +19,7 @@ library(tidyverse)
 library(gradethis)
 #devtools::install_github("rundel/learnrhash")
 library(learnrhash)
+library(dsbox)
 
 # tutorial options
 tutorial_options(
@@ -28,9 +29,11 @@ tutorial_options(
   exercise.checker = gradethis::grade_learnr
   )
 
-# make lego sales data frame globally available
-lego_sales <- read_csv("https://rb.gy/shkc8g")
+# hide non-exercise code chunks
+knitr::opts_chunk$set(echo = FALSE)
+```
 
+```{r age-group-setup}
 # for grouped summary exercises
 lego_sales <- lego_sales %>%
   mutate(age_group = case_when(
@@ -40,10 +43,8 @@ lego_sales <- lego_sales %>%
     age >= 36 & age <= 50 ~ "36 - 50",
     age >= 51             ~ "51 and over"
     ))
-
-# hide non-exercise code chunks
-knitr::opts_chunk$set(echo = FALSE)
 ```
+
 
 ---
 
@@ -511,7 +512,13 @@ learnrhash::encoder_logic()
 ```
 
 ```{r encode, echo=FALSE}
-learnrhash::encoder_ui(url = "https://forms.gle/axes15uGwAhiPcbs5")
+learnrhash::encoder_ui(
+  ui_before = div(strong("Submit your hash in the form below."), br(), br()),
+  ui_after  = learnrhash::iframe_ui(
+    src = "https://docs.google.com/forms/d/e/1FAIpQLSdzre-kmqNje64ZCK7VsXHWKSVdGNOjSUwU1IZaCWs_vL_yuQ/viewform",
+    width="900px", height= "1000px"
+  )
+)
 ```
 
 ## Decode demo
